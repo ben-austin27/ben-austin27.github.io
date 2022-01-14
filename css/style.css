@@ -457,3 +457,12 @@ header {
     margin-left: auto;
     margin-left: auto;
 }
+
+/* d3.js page */
+
+.portfolio-item-individual__code {
+    background-color: #5c5c5c;
+    color: var(--clr-light);
+    font-weight: var(--fw-bold);
+    text-align: center;
+}
