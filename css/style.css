@@ -460,9 +460,37 @@ header {
 
 /* d3.js page */
 
-.portfolio-item-individual__code {
-    background-color: #5c5c5c;
-    color: var(--clr-light);
+.d3-post--subtitle {
+    background-color: var(--clr-accent);
+    max-width: 1000px;
+    display: grid;
+    margin: 0 auto;
+    grid-column-gap: 1em;
+}
+
+.d3-post--subtitle--text {
+    color: var(--clr-dark);
     font-weight: var(--fw-bold);
-    text-align: center;
+    margin-left: 1em;
+}
+
+.d3-post--content--text {
+    padding-top: 2em;
+    padding-bottom: 1em;
+    max-width: 900px;
+    display: grid;
+    margin: 0 auto;
+    grid-column-gap: 1em;
+}
+
+.d3-post--code {
+    background-color: var(--clr-dark);
+    max-width: 700px;
+    display: grid;
+    margin: 0 auto;
+}
+
+.d3-post--code--text {
+    margin-left: 1em;
+    color: var(--clr-light);
 }
