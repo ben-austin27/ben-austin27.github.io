@@ -10,9 +10,8 @@
         href = "https://cdnjs.cloudfare.com/ajas/libs/font-awesome/5.11.2/css/all.css"
         integrity = "sha256-46qynGAkLSFpVbEBog43gvNhfr0j+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
         <script src="https://kit.fontawesome.com/1d82a883f3.js" crossorigin="anonymous"></script>
-
+        <script src="https://d3js.org/d3.v6.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans+Pro:300,900&display=swap" rel="stylesheet">
-
         <link rel = "stylesheet" href = "css/style.css">
     </head>
     <body>
@@ -82,13 +81,29 @@
                 </p>
             </div>
             <p class = "d3-post d3-post--content--text">
+                The final thing we need to get things working is a final script tag. This will link to our JavaScript file, where we will write
+                our JavaScript code to form the visualisation using d3.js. <br/> We can embed the script tag inside the div, so that the location
+                of our visualisation looks like the following:
+            </p>
+            <div class = "d3-post d3-post--code">
+                <p class = "d3-post d3-post--code--text">
+                    &lt;div id="my_dataviz" class="my_dataviz"&gt; <br/>
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;script src="js/d3.js"&gt;&lt;/script&gt; <br/>
+                    &lt;/div&gt;
+                </p>
+            </div>
+            <p class = "d3-post d3-post--content--text">
                 We are now ready to start using d3.js <br/> <br/>
             </p>
             <div class = "d3-post d3-post--subtitle">
                 <p class = "d3-post d3-post--subtitle--text">
-                    Intro to d3.js syntax
+                    A basic d3.js visualisation
                 </p>
             </div>
+            <div id="my_dataviz" class="my_dataviz">
+                <script src="js/d3.js"></script>
+            </div>
+            
         </section>
 
         <footer class = "footer">
@@ -113,6 +128,6 @@
         </footer>
 
         <script src="js/index.js"></script>
-        
+        </div>
     </body>
 </html>
