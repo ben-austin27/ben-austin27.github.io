@@ -100,8 +100,26 @@
                     A basic d3.js visualisation
                 </p>
             </div>
+            <p class = "d3-post d3-post--content--text">
+                In this section we are going to step through making our first basic visualisation. The bar chart:
+            </p>
             <div id="my_dataviz" class="my_dataviz">
                 <script src="js/d3.js"></script>
+            </div>
+            <p class = "d3-post d3-post--content--text">
+                There are a few steps to get something like what is shown above up and running, the first is to setup some variables
+                in our JavaScript file. In order to dial in the parameters for the size of the visualisation, we need 3 variables at the 
+                top of our .js file; margin, width and height. Margin is a list of 4 numbers corresponding to pixel sized margins on each edge of 
+                the visualisation. The width and heights are also numbers, but minusing off the size of the margins. This allows the number 
+                at the start of the variable to be the maximum size of the svg that we will generate later on. <br/> <br/> These variables can differ
+                but may resemble the following code chunk:
+            </p>
+            <div class = "d3-post d3-post--code">
+                <p class = "d3-post d3-post--code--text">
+                    const margin = {top: 30, right: 30, bottom: 20, left: 60}, <br/>
+                    &nbsp; &nbsp; &nbsp; &nbsp;width = 460 - margin.left - margin.right,<br/>
+                    &nbsp; &nbsp; &nbsp; &nbsp;height = 400 - margin.top - margin.bottom;
+                </p>
             </div>
             
         </section>
