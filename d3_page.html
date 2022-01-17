@@ -143,8 +143,35 @@
                 if you wanted to display the same visualisation in multiple sections of a webpage. In this case we would need to use d3.selectAll("#my_dataviz"). <br/> <br/>
                 The second line appends an svg object within our div element. The third and fourth lines then set the size of this svg object using the variables that we defined above.
                 Notice that we add the margin widths to the size of the svg, this will allow us to only use the height and width when creating the visualisation and thus ensure everything 
-                that we plot is within the svg space.<br/> <br/>
+                that we plot is within the svg space. A 'g' tag is then appened too. This allows all further objects that are drawn to be grouped together, so that any changes to where we
+                display the graph, i.e. if we need to translate it, will apply to all elements.
             </p>
+            <p class = "d3-post d3-post--content--text">
+                Next we need to parse some data to draw our objects with, we can parse a simple csv by doing the following:
+            </p>
+            <div class = "d3-post d3-post--code">
+                <p class = "d3-post d3-post--code--text">
+                    d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master <br/> /Example_dataset/7_OneCatOneNum_header.csv").then( function(data) {
+                </p>
+            </div>
+            <p class = "d3-post d3-post--content--text">
+                We chain ".then(function(data) {" to tell d3 what to do with the data we just gave it, the next sections will all be inside this function.
+            </p>
+            <p class = "d3-post d3-post--content--text">
+                The next step is to deal with the x axis. We need to tell d3 how to space our inputs for the graph. In the case of a bar chart we need to use "scaleBand()"
+                to generate the bands on the x axis for our data. We do this using the following:
+            </p>
+            <div class = "d3-post d3-post--code">
+                <p class = "d3-post d3-post--code--text">
+                    const x = d3.scaleBand() <br/>
+                    &nbsp; &nbsp; &nbsp; &nbsp; .range([ 0, width ]) <br/>
+                    &nbsp; &nbsp; &nbsp; &nbsp; .domain(data.map(d => d.Country))<br/>
+                    &nbsp; &nbsp; &nbsp; &nbsp; .padding(0.2);
+                </p>
+            </div>
+
+
+            
             
         </section>
 
