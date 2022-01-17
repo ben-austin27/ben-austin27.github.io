@@ -121,6 +121,30 @@
                     &nbsp; &nbsp; &nbsp; &nbsp;height = 400 - margin.top - margin.bottom;
                 </p>
             </div>
+            <p class = "d3-post d3-post--content--text">
+                Now that we have the size of our visualisation, we can append an svg object within the div that we created earlier.
+                To do this we will define a variable called "svg", which will select all div's with the id that we used, append some attributes
+                that will define the size of the svg, and then append a group tag, which acts similarly to grouping objects in MicroSoft Office. The result looks like this:
+            </p>
+            <div class = "d3-post d3-post--code">
+                <p class = "d3-post d3-post--code--text">
+                    const svg = d3.select("#my_dataviz") <br/>
+                    &nbsp; &nbsp; &nbsp; &nbsp;.append("svg")<br/>
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.attr("width", width + margin.left + margin.right)<br/>
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.attr("height", height + margin.top + margin.bottom)<br/>
+                    &nbsp; &nbsp; &nbsp; &nbsp;.append("g")<br/>
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.attr("transform", `translate(${margin.left},${margin.top})`);
+                </p>
+            </div>
+            <p class = "d3-post d3-post--content--text">
+                Let's step through the code in this section <br/> <br/>
+                The first line: "const svg = d3.select("#my_dataviz")" creates a variable called svg, which asks d3 to final all html tags with the id of "my_dataviz". 
+                The only one in our code with this id is the one we created earlier, so that is where the visualisation will be displayed. You could have multiple though
+                if you wanted to display the same visualisation in multiple sections of a webpage. In this case we would need to use d3.selectAll("#my_dataviz"). <br/> <br/>
+                The second line appends an svg object within our div element. The third and fourth lines then set the size of this svg object using the variables that we defined above.
+                Notice that we add the margin widths to the size of the svg, this will allow us to only use the height and width when creating the visualisation and thus ensure everything 
+                that we plot is within the svg space.<br/> <br/>
+            </p>
             
         </section>
 
