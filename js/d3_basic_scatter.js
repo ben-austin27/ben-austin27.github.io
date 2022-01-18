@@ -11,7 +11,7 @@ const scatter_svg = d3.select("#scatter_d3_1")
   .append("g")
     .attr("transform", `translate(${scatter_margin.left},${scatter_margin.top})`);
 
-d3.csv("js/pounds_units.csv/").then( function(scatter_data) {
+d3.csv("https://raw.githubusercontent.com/ben-austin27/ben-austin27.github.io/main/data/pounds_units.csv").then( function(scatter_data) {
 
 console.log(scatter_data)
 
@@ -30,12 +30,20 @@ scatter_svg.append("g")
 scatter_svg.append("g")
       .call(d3.axisLeft(scatter_y));
 
-scatter_svg.append('g')
-      .selectAll("point")
-      .data(scatter_data)
-      .join("circle")
-        .attr("cx", d => scatter_x(d.pounds))
-        .attr("cy", d => scatter_y(d.units))
-        .attr("r", 5)
-        .attr("fill", "#4bbfc9")
+points = scatter_svg.append('g')
+          .selectAll("point")
+          .data(scatter_data)
+          .join("circle")
+            .attr("cx", d => scatter_x(d.pounds))
+            .attr("cy", d => scatter_height)
+            .attr("r", 5)
+            .attr("fill", "#4bbfc9")
+
+update();
+
+function update() {
+      points.transition()
+          .ease(d3.easePolyInOut.exponent(3)) //https://observablehq.com/@d3/easing-animations
+          .duration(2000)
+          .attr("cy", d => scatter_y(d.units))}
 })
