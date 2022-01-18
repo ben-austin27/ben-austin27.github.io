@@ -1,47 +1,41 @@
 // set the dimensions and margins of the graph
-const margin = {top: 30, right: 30, bottom: 70, left: 60},
-      width = 460 - margin.left - margin.right,
-      height = 400 - margin.top - margin.bottom;
+const scatter_margin = {top: 30, right: 30, bottom: 70, left: 60},
+      scatter_width = 460 - scatter_margin.left - scatter_margin.right,
+      scatter_height = 400 - scatter_margin.top - scatter_margin.bottom;
 
 // append the svg object to the body of the page
-const svg = d3.select("#my_dataviz2")
+const scatter_svg = d3.select("#scatter_d3_1")
   .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
+    .attr("width", scatter_width + scatter_margin.left + scatter_margin.right)
+    .attr("height", scatter_height + scatter_margin.top + scatter_margin.bottom)
   .append("g")
-    .attr("transform", `translate(${margin.left},${margin.top})`);
+    .attr("transform", `translate(${scatter_margin.left},${scatter_margin.top})`);
 
-// Parse the Data
-d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/7_OneCatOneNum_header.csv").then( function(data) {
+d3.csv("js/pounds_units.csv/").then( function(scatter_data) {
 
-// X axis
-const x = d3.scaleBand()
-  .range([ 0, width ])
-  .domain(data.map(d => d.Country))
-  .padding(0.2);
-  
-svg.append("g")
-  .attr("transform", "translate(0," + height + ")")
-  .call(d3.axisBottom(x))
-  .selectAll("text")
-    .attr("transform", "translate(-10,0)rotate(-45)")
-    .style("text-anchor", "end");
+console.log(scatter_data)
 
-// Add Y axis
-const y = d3.scaleLinear()
-  .domain([0, 13000])
-  .range([height, 0]);
-svg.append("g")
-  .call(d3.axisLeft(y));
+const scatter_x = d3.scaleLinear()
+                    .domain([0,10])
+                    .range([0,scatter_width]);
 
-// Bars
-svg.selectAll("mybar")
-  .data(data)
-  .join("rect")
-    .attr("x", d => x(d.Country))
-    .attr("y", d => y(d.Value))
-    .attr("width", x.bandwidth())
-    .attr("height", d => height - y(d.Value))
-    .attr("fill", "#4bbfc9")
+const scatter_y = d3.scaleLinear()
+                    .domain([0,10])
+                    .range([scatter_height,0]);
 
+scatter_svg.append("g")
+      .attr("transform", "translate(0," + scatter_height + ")")
+      .call(d3.axisBottom(scatter_x));
+
+scatter_svg.append("g")
+      .call(d3.axisLeft(scatter_y));
+
+scatter_svg.append('g')
+      .selectAll("point")
+      .data(scatter_data)
+      .join("circle")
+        .attr("cx", d => scatter_x(d.pounds))
+        .attr("cy", d => scatter_y(d.units))
+        .attr("r", 5)
+        .attr("fill", "#4bbfc9")
 })
