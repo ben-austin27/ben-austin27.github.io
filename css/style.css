@@ -495,7 +495,16 @@ header {
     color: var(--clr-light);
 }
 
+.d3-post--code--text-pre {
+    text-align: left;
+    color: var(--clr-light);
+}
+
 .my_dataviz {
     display: flex;
     justify-content: center;
+}
+
+.logo-list {
+    list-style: none;
 }
