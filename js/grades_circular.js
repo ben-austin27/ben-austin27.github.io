@@ -1,4 +1,4 @@
-const grades_margin = {top: 30, right: 30, bottom: 70, left: 60},
+const grades_margin = {top: 30, right: 0, bottom: 70, left: 0},
       grades_width = 460 - grades_margin.left - grades_margin.right,
       grades_height = 460 - grades_margin.top - grades_margin.bottom;
       innerRadius = 50,
