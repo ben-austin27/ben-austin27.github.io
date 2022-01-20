@@ -503,7 +503,14 @@ header {
 
 @media (max-width: 600px) {
     .grades_svg_class {
-        scale: 1;
+        scale: calc(390/460);
+    }
+    .my_dataviz {
+        display: grid;
+        grid-column: 1;
+        justify-content: center;
+        padding-left: 0px;
+        object-fit: contain;
     }
 }
 
