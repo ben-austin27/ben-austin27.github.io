@@ -49,6 +49,7 @@ modules = grades_svg.append("g")
         .attr("transform", function(d) { return (grades_x(d.module) + grades_x.bandwidth() / 2 + Math.PI) % (2 * Math.PI) < Math.PI ? "rotate(180)" : "rotate(0)"; })
         .style("font-size", "11px")
         .attr("alignment-baseline", "middle")
+        .attr("opacity","0")
 
 grades = grades_svg.append("g")
       .selectAll("g")
@@ -61,6 +62,8 @@ grades = grades_svg.append("g")
         .attr("transform", function(d) { return (grades_x(d.module) + grades_x.bandwidth() / 2 + Math.PI) % (2 * Math.PI) < Math.PI ? "rotate(180)" : "rotate(0)"; })
         .style("font-size", "11px")
         .attr("alignment-baseline", "middle")
+        .attr("opacity","0")
+        .attr("font-weight","bold")
 
 function update_bars() {
   d3.selectAll("path")
@@ -74,6 +77,13 @@ function update_bars() {
           .endAngle(d => grades_x(d.module) + grades_x.bandwidth())
           .padAngle(0.05)
           .padRadius(innerRadius))
+
+  d3.selectAll("text")
+      .transition()
+      .ease(d3.easePolyInOut.exponent(3)) //https://observablehq.com/@d3/easing-animations
+      .duration(2000)
+      .attr("opacity","1")
+      
 // alter opactity of the labeling as well, after 2 seconds
 }
 
