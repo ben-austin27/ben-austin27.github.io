@@ -25,20 +25,20 @@ const grades_y = d3.scaleRadial()
       .domain([40, 100]); // Domain of Y is from 0 to the max seen in the data
 
   // Add the bars
-  grades_svg.append("g")
+bars = grades_svg.append("g")
     .selectAll("path")
     .data(grades_data)
     .join("path")
       .attr("fill", d => "#" + d.color )
       .attr("d", d3.arc()     // imagine your doing a part of a donut plot
           .innerRadius(innerRadius)
-          .outerRadius(d => grades_y(d['grade']))
+          .outerRadius(innerRadius+0.05)//d => grades_y(d['grade'])
           .startAngle(d => grades_x(d.module))
           .endAngle(d => grades_x(d.module) + grades_x.bandwidth())
           .padAngle(0.05)
           .padRadius(innerRadius))
   
-  grades_svg.append("g")
+modules = grades_svg.append("g")
       .selectAll("g")
       .data(grades_data)
       .join("g")
@@ -50,7 +50,7 @@ const grades_y = d3.scaleRadial()
         .style("font-size", "11px")
         .attr("alignment-baseline", "middle")
 
-  grades_svg.append("g")
+grades = grades_svg.append("g")
       .selectAll("g")
       .data(grades_data)
       .join("g")
@@ -61,4 +61,28 @@ const grades_y = d3.scaleRadial()
         .attr("transform", function(d) { return (grades_x(d.module) + grades_x.bandwidth() / 2 + Math.PI) % (2 * Math.PI) < Math.PI ? "rotate(180)" : "rotate(0)"; })
         .style("font-size", "11px")
         .attr("alignment-baseline", "middle")
+
+function update_bars() {
+  d3.selectAll("path")
+      .transition()
+      .ease(d3.easePolyInOut.exponent(3)) //https://observablehq.com/@d3/easing-animations
+      .duration(2000)  
+      .attr("d", d3.arc()     // imagine your doing a part of a donut plot
+          .innerRadius(innerRadius)
+          .outerRadius(d => grades_y(d['grade']))
+          .startAngle(d => grades_x(d.module))
+          .endAngle(d => grades_x(d.module) + grades_x.bandwidth())
+          .padAngle(0.05)
+          .padRadius(innerRadius))
+// alter opactity of the labeling as well, after 2 seconds
+}
+
+var controller = new ScrollMagic.Controller();
+new ScrollMagic.Scene({
+  // the element to scroll inside
+  triggerElement: '#grades_circular'
+})
+.on('enter', function(e) {
+    update_bars(e);
+}).addTo(controller)
 });
