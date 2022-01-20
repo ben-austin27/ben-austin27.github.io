@@ -339,6 +339,7 @@ header {
             "subtitle img"
             "text img";
         grid-column-gap: 2em;
+        padding-bottom: 0px;
     }
 
     .section__title--about{

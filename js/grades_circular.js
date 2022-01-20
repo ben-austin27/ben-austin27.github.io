@@ -5,7 +5,6 @@ const grades_margin = {top: 30, right: 0, bottom: 70, left: 0},
       outerRadius = Math.min(grades_width, grades_height) / 2;
 
 const grades_svg = d3.select("#grades_circular")
-  .append("center")
   .append("svg")
     .attr("width", grades_width + grades_margin.left + grades_margin.right)
     .attr("height", grades_height + grades_margin.top + grades_margin.bottom)
