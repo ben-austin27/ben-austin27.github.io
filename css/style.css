@@ -507,13 +507,16 @@ header {
     }
 }
 
-.my_dataviz {
-    display: flex;
-    justify-content: center;
-    padding-left: 0px;
-    object-fit: contain;
+@media (min-width: 600px) {
+    .my_dataviz {
+        display: flex;
+        justify-content: center;
+        padding-left: 0px;
+        object-fit: contain;
+}
 }
 
 .logo-list {
     list-style: none;
 }
+
