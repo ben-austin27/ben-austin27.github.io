@@ -6,6 +6,7 @@ const scatter_margin = {top: 30, right: 30, bottom: 70, left: 60},
 // append the svg object to the body of the page
 const scatter_svg = d3.select("#scatter_d3_1")
   .append("svg")
+    .attr("class","viz_svg_class")
     .attr("width", scatter_width + scatter_margin.left + scatter_margin.right)
     .attr("height", scatter_height + scatter_margin.top + scatter_margin.bottom)
   .append("g")
