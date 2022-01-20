@@ -503,13 +503,15 @@ header {
 
 @media (max-width: 600px) {
     .my_dataviz {
-        scale: 1;
+        scale: 0.5;
     }
 }
 
 .my_dataviz {
     display: flex;
     justify-content: center;
+    padding-left: 0px;
+    object-fit: contain;
 }
 
 .logo-list {
