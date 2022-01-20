@@ -153,7 +153,7 @@
             </p>
             <div class = "d3-post d3-post--code">
                 <p class = "d3-post d3-post--code--text">
-                    d3.csv("ink_here") <br/>
+                    d3.csv("link_here") <br/>
                     .then( function(data) {
                 </p>
             </div>
@@ -179,7 +179,8 @@
             <div class = "d3-post d3-post--code">
                 <p class = "d3-post d3-post--code--text">
                     svg.append("g") <br/>
-                    &nbsp; &nbsp; &nbsp; &nbsp; .attr("transform", "translate(0," + height + ")") <br/>
+                    &nbsp; &nbsp; &nbsp; &nbsp; .attr("transform", "translate(0," <br/> 
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; + height + ")") <br/>
                     &nbsp; &nbsp; &nbsp; &nbsp; .call(d3.axisBottom(x)) <br/>
                     &nbsp; &nbsp; &nbsp; &nbsp; .selectAll("text") <br/>
                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .attr("transform", "translate(-10,0)rotate(-45)") <br/>
