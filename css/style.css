@@ -502,7 +502,7 @@ header {
 
 @media (max-width: 600px) {
     .my_dataviz {
-        scale: 0.8;
+        scale: 1;
     }
 }
 
