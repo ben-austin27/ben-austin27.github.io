@@ -502,8 +502,8 @@ header {
 }
 
 @media (max-width: 600px) {
-    .my_dataviz {
-        scale: 0.5;
+    .grades_svg_class {
+        scale: 1;
     }
 }
 
