@@ -14,7 +14,7 @@ const svg = d3.select("#my_dataviz")
 
 const svg2 = d3.select("#my_dataviz2")
   .append("svg")
-    .attr("class","bar_svg_class")
+    .attr("class","viz_svg_class")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
