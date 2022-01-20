@@ -502,9 +502,18 @@ header {
 }
 
 @media (max-width: 600px) {
-    .grades_svg_class {
+    .viz_svg_class {
         scale: calc(390/460);
     }
+
+    .viz_svg_class {
+        scale: calc(390/460);
+    }
+
+    .viz_svg_class {
+        scale: calc(390/460);
+    }
+
     .my_dataviz {
         display: grid;
         grid-column: 1;

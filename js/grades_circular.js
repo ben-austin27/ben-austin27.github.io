@@ -6,7 +6,7 @@ const grades_margin = {top: 30, right: 0, bottom: 70, left: 0},
 
 const grades_svg = d3.select("#grades_circular")
   .append("svg")
-    .attr("class","grades_svg_class")
+    .attr("class","viz_svg_class")
     .attr("width", grades_width + grades_margin.left + grades_margin.right)
     .attr("height", grades_height + grades_margin.top + grades_margin.bottom)
   .append("g")
