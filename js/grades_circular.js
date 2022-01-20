@@ -6,12 +6,11 @@ const grades_margin = {top: 30, right: 0, bottom: 70, left: 0},
 
 const grades_svg = d3.select("#grades_circular")
   .append("svg")
+    .attr("class","grades_svg_class")
     .attr("width", grades_width + grades_margin.left + grades_margin.right)
     .attr("height", grades_height + grades_margin.top + grades_margin.bottom)
   .append("g")
     .attr("transform", `translate(${grades_width/2+grades_margin.left}, ${grades_height/2+grades_margin.top})`);
-
-
 
 d3.csv("https://raw.githubusercontent.com/ben-austin27/ben-austin27.github.io/main/data/results.csv").then( function(grades_data) {
   
