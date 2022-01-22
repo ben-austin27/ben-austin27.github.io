@@ -238,9 +238,49 @@
             </div>
             <p class = "d3-post d3-post--content--text">
                 Before moving on to some more complex visualisations with d3, it's a good idea to make sure we have a solid knowledge of some other basic visualisations; next on the list is the scatter plot.
+                We'll include some animation with this one too!
             </p>  
-            <div id="scatter_d3_1" class="my_dataviz">
+            <div id="scatter_d3_1" class="my_dataviz"></div>
+            <p class = "d3-post d3-post--content--text">
+                The idea of this visualisation is that we plot an initial state, and then update the position of the points when we want to trigger the visualisation animation. Plotting the initial state is very
+                similar to the above bar chart, the only change is that we set the inital y co-ordinate to be on the x axis. To do this, we chain the following:
+            </p>
+            <div class = "d3-post d3-post--code">
+                <p class = "d3-post d3-post--code--text">
+                    .attr("cx", d => scatter_x(d.pounds)) <br/>
+                    .attr("cy", scatter_height)
+                </p>
             </div>
+            <p class = "d3-post d3-post--content--text">
+                The hardest part of this visualisation is the animation. I wanted it to trigger once scrolled onto, which requires some neat JavaScript called "ScrollMagic". Which can be sourced with this link:<br/> <br/>
+                https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.js <br/> <br/> We need the following code in our d3 file:
+            </p>
+            <div class = "d3-post d3-post--code">
+                <p class = "d3-post d3-post--code--text">
+                    function update() {<br/>
+                    &nbsp; &nbsp; &nbsp; &nbsp;points.transition()<br/>
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.ease(d3.easePolyInOut.exponent(3))<br/>
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.duration(2000)<br/>
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.attr("cy", d => scatter_y(d.units))}<br/>
+                    <br/>
+                    var controller = new ScrollMagic.Controller();<br/>
+                    new ScrollMagic.Scene({<br/>
+                    &nbsp; &nbsp; &nbsp; &nbsp;// the element to scroll inside<br/>
+                    &nbsp; &nbsp; &nbsp; &nbsp;triggerElement: '#scatter_d3_1'<br/>
+                    })<br/>
+                    .on('enter', function(e) {<br/>
+                    &nbsp; &nbsp; &nbsp; &nbsp;update(e);<br/>
+                    }).addTo(controller)
+                </p>
+            </div>
+            <p class = "d3-post d3-post--content--text">
+                The first part is defining the update function, this defines what changes we want once the animation is triggered. In our chase this is just changing the height of the points, I've chosen to ease this over 2000ms. 
+                There are loads of different ease animations, more can be found here: <br/> <br/> <a href ="https://observablehq.com/@d3/easing-animations">https://observablehq.com/@d3/easing-animations</a> <br/> <br/>
+                The next job is to create the controller for the animation. This is simple with ScrollMagic, we just create a new variable called "controller". We then need a new scene, this tells ScrollMagic what div we are wanting to animate.
+                In our case this is has the ID: "scatter_d3_1". Finally we tell ScrollMagic that on entering this div, we want to trigger the function we defined earlier, and then add this logic to the controller object. Note that the default is triggered 
+                when the vertical middle of the screen hits the top of the div, but this can be changed. The way that I have built this approach is very versitile, all that would need to be changed is the content of the update 
+                function to tailor the animation. The approach where you draw all elements in an intial state will improve speed of page loading. Just like that! We have animation!
+            </p>
         </section>
 
         <footer class = "footer">
