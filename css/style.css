@@ -554,18 +554,28 @@ header {
 
 @media (max-width: 800px) {
     .map {
-        scale: 0.8;
+        scale:calc(390/960);
 }
     .map_svg {
-        scale:0.8;
+        scale:calc(390/960);
     }
 }
 
 
 @media (max-width: 600px) {
     .map_svg {
-        scale:0.8;
+        scale: calc(390/960);
+        transform: translateY(-700px);
+        padding-bottom: 0px;
     }
+
+    .map {
+        padding-bottom: 0px;
+}
+    .viz_map {
+        height: 400px;
+    }
+
 }
 
 .lad {
