@@ -528,6 +528,15 @@ header {
         padding-left: 0px;
         object-fit: contain;
     }
+
+    .map_above_text {
+        padding-top: 2em;
+        padding-bottom: 1em;
+        max-width: 500px;
+        display: grid;
+        margin: 0 auto;
+        grid-column-gap: 1em;
+    }
 }
 
 @media (min-width: 600px) {
@@ -543,3 +552,28 @@ header {
     list-style: none;
 }
 
+@media (max-width: 800px) {
+    .map {
+        scale: 0.8;
+}
+    .map_svg {
+        scale:0.8;
+    }
+}
+
+
+@media (max-width: 600px) {
+    .map_svg {
+        scale:0.8;
+    }
+}
+
+.lad {
+    fill: rgb(207, 207, 207);
+    stroke: rgb(0, 0, 0);
+    stroke-width: 0.75px;
+  }
+
+.lad:hover {
+    fill: var(--clr-accent);
+}

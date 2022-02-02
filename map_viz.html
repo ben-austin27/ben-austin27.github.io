@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ben Austin > d3.js</title>
+        <link rel = "stylesheet"
+        href = "https://cdnjs.cloudfare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+        <link rel = "stylesheet"
+        href = "https://cdnjs.cloudfare.com/ajas/libs/font-awesome/5.11.2/css/all.css"
+        integrity = "sha256-46qynGAkLSFpVbEBog43gvNhfr0j+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
+        <script src="https://kit.fontawesome.com/1d82a883f3.js" crossorigin="anonymous"></script>
+        <script src="https://d3js.org/d3.v3.js"></script>
+        <script src="http://d3js.org/topojson.v1.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans+Pro:300,900&display=swap" rel="stylesheet">
+        <link rel = "stylesheet" href = "css/style.css">
+    </head>
+    <body>
+        <header>
+            <div class= "logo">
+                <li class= "logo-list">
+                    <a class = "logo" href = "index.html">
+                        <i class="fas fa-bold"></i>
+                    </a>
+                </li>
+            </div>
+            <button class = "nav-toggle" aria-label="toggle navigation">
+                <span class = "hamburger"></span>
+            </button>
+            <nav class = "nav">
+                <ul class="nav__list">
+                    <li class = "nav__item"><a href = "index.html" class = "nav__link">Home</a></li>
+                    <li class = "nav__item"><a href = "index.html#services" class = "nav__link">My Services</a></li>
+                    <li class = "nav__item"><a href = "index.html#about" class = "nav__link">About me</a></li>
+                    <li class = "nav__item"><a href = "index.html#work" class = "nav__link">My Work</a></li>
+                    <li class = "nav__item"><a href = "d3_page.html" class = "nav__link">d3.js</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="intro" id="home">
+            <h1 class = "section__title section__title--intro">
+                Mapping with <strong>d3.js</strong>
+            </h1>
+            <p class = "section__subtitle section__subtitle--intro"></p>
+            <img src="img/map.png" class = "intro__image">
+        </section>
+
+
+        <!-- d3 content -->
+
+        <section class = "d3-post">
+            <div class = "d3-post d3-post--subtitle">
+                <p class = "d3-post d3-post--subtitle--text">
+                    Interactive mapping with topojson files
+                </p>
+            </div>
+            <p class = "d3-post d3-post--content--text">
+                As part of my journey to learn d3.js and JavaScript, I embarked on this interactive mapping project, to build a custom UK map with user input. This was
+                one of my biggest challenges with d3.js yet, and I'm super pleased with the result. <br/> The map shown below uses a topojson source file to plot paths 
+                of all counties in the UK, with animation on mouse hover.
+            </p>
+            <div class="my_dataviz">
+                <script>
+                    var refresh_sec = 1
+                    
+                    var width = 960,
+                        height = 1000;
+                    
+                    var projection = d3.geo.mercator()
+                        .translate([700,4300]) // has to be hard coded uk.json: 700,4300
+                        .scale(3300); // trial and error uk.json: 3300
+                    
+                    var path = d3.geo.path().projection(projection);
+                    
+                    path.projection(projection);
+                    var svg = d3.select(".my_dataviz").append("svg")
+                        .attr("width", width)
+                        .attr("height", height)
+                        .attr("class","map_svg");
+                    
+                    
+                    document.addEventListener('DOMContentLoaded', function() { //allows triggering on load
+                    
+                        d3.json("https://raw.githubusercontent.com/deldersveld/topojson/master/countries/united-kingdom/uk-counties.json", function(error, topology) {
+                    
+                          lads = topojson.feature(topology, topology.objects.GBR_adm2).features; 
+                    
+                          initialise(); // plots just the map
+                    
+                          setInterval(function(){// this function takes random elements of store data and appends it ever 1s
+                            // getting json data
+                            try {
+                              var xhReq = new XMLHttpRequest();
+                              xhReq.open("GET", "json_loc_data.json", false);
+                              xhReq.send(null);
+                              var jsonObject = JSON.parse(xhReq.responseText);
+                              plotpoints(jsonObject.points.slice(-1));
+                            }
+                            catch(err){
+                              console.log("No Data")
+                            }
+                             //plots a single point at a time, the last in the json object
+                          },refresh_sec*1000);// plots every 1 second
+                          //d3.select("body").on('click',function(){plotpoints()}); // allows triggering on click, plots the points on the map
+                        });
+                    
+                    });
+                    
+                    function initialise(){
+                      svg.selectAll(".lad")
+                         .data(lads)
+                         .enter().append("path")
+                         .attr("class","lad")
+                         .attr("d",path)
+                    };
+                    
+                    function plotpoints(dataset){ //currently all points are plotted every second
+                    // long, lat format
+                      svg.selectAll("circles")
+                        .data(dataset)
+                        .enter()
+                        .append("circle")
+                        .attr("r","7px")
+                        .attr("fill", "red")//"#7f0442"
+                        .attr("opacity","1")
+                        .attr("transform", function(d) {return "translate(" + projection([+d.long,+d.lat]) + ")";})
+                        .transition()
+                          .duration(20000) // fade over 20 seconds
+                          .attr("opacity","0")
+                        };
+                    </script>
+            </div>
+
+        </section>
+
+        <footer class = "footer">
+            <a href="mailto:benaustin27@gmail.com" class = "footer__link">benaustin27@gmail.com</a>
+            <ul class = "social-list">
+                <li class = "social-list__item">
+                    <a class = "social-list__link" href = "facebook.com">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </li>
+                <li class = "social-list__item">
+                    <a class = "social-list__link" href = "instagram.com">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </li>
+                <li class = "social-list__item">
+                    <a class = "social-list__link" href = "github.com">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </li>
+            </ul>
+        </footer>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.js" integrity="sha512-UgS0SVyy/0fZ0i48Rr7gKpnP+Jio3oC7M4XaKP3BJUB/guN6Zr4BjU0Hsle0ey2HJvPLHE5YQCXTDrx27Lhe7A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="js/index.js"></script>
+        <script src="js/d3_basic_bar.js"></script>
+        <script src="js/d3_basic_scatter.js"></script>
+        </div>
+    </body>
+</html>
