@@ -561,7 +561,6 @@ header {
     }
 }
 
-
 @media (max-width: 600px) {
     .map_svg {
         scale: calc(390/960);
@@ -586,4 +585,15 @@ header {
 
 .lad:hover {
     fill: var(--clr-accent);
+}
+
+.lad:active {
+    fill: var(--clr-accent);
+}
+
+.map_button {
+    display: block;
+    margin: auto;
+    background-color: var(--clr-accent);
+    font-weight: var(--fw-bold);
 }
