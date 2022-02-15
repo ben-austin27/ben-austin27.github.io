@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ben Austin > Web Scraping</title>
+        <link rel = "stylesheet"
+        href = "https://cdnjs.cloudfare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+        <link rel = "stylesheet"
+        href = "https://cdnjs.cloudfare.com/ajas/libs/font-awesome/5.11.2/css/all.css"
+        integrity = "sha256-46qynGAkLSFpVbEBog43gvNhfr0j+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
+        <script src="https://kit.fontawesome.com/1d82a883f3.js" crossorigin="anonymous"></script>
+        <script src="https://d3js.org/d3.v3.js"></script>
+        <script src="https://d3js.org/topojson.v1.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans+Pro:300,900&display=swap" rel="stylesheet">
+        <link rel = "stylesheet" href = "css/style.css">
+    </head>
+    <body>
+        <header>
+            <div class= "logo">
+                <li class= "logo-list">
+                    <a class = "logo" href = "index.html">
+                        <i class="fas fa-bold"></i>
+                    </a>
+                </li>
+            </div>
+            <button class = "nav-toggle" aria-label="toggle navigation">
+                <span class = "hamburger"></span>
+            </button>
+            <nav class = "nav">
+                <ul class="nav__list">
+                    <li class = "nav__item"><a href = "index.html" class = "nav__link">Home</a></li>
+                    <li class = "nav__item"><a href = "index.html#services" class = "nav__link">My Services</a></li>
+                    <li class = "nav__item"><a href = "index.html#about" class = "nav__link">About me</a></li>
+                    <li class = "nav__item"><a href = "index.html#work" class = "nav__link">My Work</a></li>
+                    <li class = "nav__item"><a href = "d3_page.html" class = "nav__link">d3.js</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="intro" id="home">
+            <h1 class = "section__title section__title--intro">
+                Web Scraping with <strong>Python</strong>
+            </h1>
+            <p class = "section__subtitle section__subtitle--intro"></p>
+            <img src="img/web scraping.png" class = "intro__image">
+        </section>
+
+        <section class = "d3-post">
+            <div class = "d3-post d3-post--subtitle">
+                <p class = "d3-post d3-post--subtitle--text">
+                    Creating a webscraper
+                </p>
+            </div>
+            <p class = "d3-post d3-post--content--text">
+                I embarked on my development journey to learn Python midway through 2021. One of the drivers for my desire to enhance my coding skills in a popular language such as Python was to automate tasks in my day to day life. 
+                Working as a Data Visualisation and Automation Analyst for Sainsbury's opened my eyes to what is possible with languages such as Python, using some very powerful packages.
+                After using retail investor apps to manage my personal finances, I found that one of the most valuable features were price notifications for certain stocks and funds. Having automatic notifications setup meant that I didn't have to worry about checking prices, as I knew I would receive a push notification if there were any significant market swings.  <br/>  <br/>
+                I wanted to bring this functionality to cryptocurrency monitoring. <br/> <br/>
+                As crypto is such a volatile asset to hold, large price swings are common, and due to the 24/7 nature of the market, may occur while the holder is asleep, or unable to react to the market changes. Bringing price notification monitoring to crypto would allow an investor to be notified of changes, without having to check the price of the asset. <br/> 
+                Using this premise as a driver for my Python project, I built a web scraper to do just this; the mechanics of which I will outline below.
+            </p>
+            <div class = "d3-post d3-post--subtitle">
+                <p class = "d3-post d3-post--subtitle--text">
+                    Choosing your weapon
+                </p>
+            </div>
+            <p class = "d3-post d3-post--content--text">
+                When it comes to web scraping, there are two main weapons in the arsenal of the developer: Beautiful Soup or Selenium. The choice between these two incredibly powerful packages was the first step in my journey to create the web scraper I desired. The choice between the two should be down to use case. 
+                Beautiful Soup is a parser that can be used to parse html and extract objects within in. Selenium is a functional acceptance API, allowing users to built programs to test web pages, this includes the ability to interact with a webpage, as well as extract elements. Selenium is very powerful as it can be used to access data behind login screens, buttons, clicks in a webpage. <br/> I knew where my data was, and it was easily accessible, no login pages, no buttons, no clicks.
+                This meant that for my use case in this project, the services I required were that of Beautiful Soup. I am currently working on a slightly more functional version of the script that uses Selenium instead, but for now, Beautiful Soup will very much suffice.
+            </p>
+        </section>
+
+        <footer class = "footer">
+            <a href="mailto:benaustin27@gmail.com" class = "footer__link">benaustin27@gmail.com</a>
+            <ul class = "social-list">
+                <li class = "social-list__item">
+                    <a class = "social-list__link" href = "facebook.com">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </li>
+                <li class = "social-list__item">
+                    <a class = "social-list__link" href = "instagram.com">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </li>
+                <li class = "social-list__item">
+                    <a class = "social-list__link" href = "github.com">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </li>
+            </ul>
+        </footer>
+        <script src="js/index.js"></script>
+        </div>
+    </body>
+</html>
