@@ -49,7 +49,7 @@
         <section class = "d3-post">
             <div class = "d3-post d3-post--subtitle">
                 <p class = "d3-post d3-post--subtitle--text">
-                    Creating a webscraper
+                    Creating a Web Scraper
                 </p>
             </div>
             <p class = "d3-post d3-post--content--text">
@@ -87,9 +87,9 @@
                 </p>
             </div>
             <p class = "d3-post d3-post--content--text">
-                First of all, we intiialise a website URL, this is the site that I needed to scrape, but any website will do. The next line sends a request to the website, and the third line uses Beautiful Soup to parse the html. At this stage, we have full access to the html so we can search it for elements. Using a web dev kit for chrome or safari we can inspect the element that we need and figure out how to access it. 
+                First of all, we provide a website URL, this is the site that I needed to scrape, but any website will do. The next line sends a request to the website, and the third line uses Beautiful Soup to parse the html. At this stage, we have full access to the html so we can search it for elements. Using a web dev kit for chrome or safari we can inspect the element that we need and figure out how to access it. 
                 The best way for my element was to access a div with the given class name 'priceValue smallerPrice'. You can drill more if needed once inside a div using dot notion, e.g. temp1.p.text would access the paragraph element inside temp1, we need to '.text' to convert to a Python string. Float can then be parsed if a number is needed. 
-                Beautiful Soup has done then hard work for us here, we have the live price of a cryto in our Python Script. I now needed to determine a way of notification.
+                Beautiful Soup has done then hard work for us here, we have the live price of a cryptocurrency in our Python Script. I now needed to determine a way of notification.
             </p>
             <div class = "d3-post d3-post--subtitle">
                 <p class = "d3-post d3-post--subtitle--text">
@@ -97,7 +97,7 @@
                 </p>
             </div>
             <p class = "d3-post d3-post--content--text">
-                Extracting the current price is all well and good, but useless if there is no way of the script notifying the user of a change in price. The way that I tackled this problem was storing the price everytime the script ran in a text file. The script would then access the last line of the text file and check for a significant enough difference, which I set at 10%.
+                Extracting the current price is all well and good, but useless if there is no way of the script notifying the user of a change in price. The way that I tackled this problem was storing the price every time the script ran in a text file. The script would then access the last line of the text file and check for a significant enough difference, which I set at 10%.
                 If the price were to drop by more than 10%, then I used the following code to ping a website, which would trigger an IFTTT module to send my phone a notification.
             </p>
             <div class = "d3-post d3-post--code">
@@ -119,9 +119,9 @@
                 </p>
             </div>
             <p class = "d3-post d3-post--content--text">
-                The core functionality of the script is detailed above; however I made some quality of life enhancements after the core script was working. Building in email notifications was the first enhancement. This allowed me to send more information when a price drop was notified. I included the price, asset value, a graph and website links in the email, so that all infomation was quickly accessible when a drop was noticed.
-                The second was deploying the script to run 24/7. To achieve this, I used a RaspberryPi. Deploying the script to the Pi was really easy, and running the script on a schedule was also easy to setup. The script is currently running every 10 minutes, and has been 24/7 for just over 2 months at the time of writing. After building in some error checking incase the internet connection went down, or the target website hung, the script very rarely errors; and if it does, I get a notification, so that I can quickly get it up and running again. <br/> <br/>
-                Overall this project was a really interesting way to enchance my Python skills. Tackling new modules including Beautiful Soup was a good challenege and has provided me with some very powerful web scraping skills that could be used to a whole variety of purposes! Feel free to contact me if you are interested in the script, or have any questions.
+                The core functionality of the script is detailed above; however I made some quality of life enhancements after the core script was working. Building in email notifications was the first enhancement. This allowed me to send more information when a price drop was notified. I included the price, asset value, a graph and website links in the email, so that all information was quickly accessible when a drop was noticed.
+                The second was deploying the script to run 24/7. To achieve this, I used a RaspberryPi. Deploying the script to the Pi was really easy, and running the script on a schedule was also easy to setup. The script is currently running every 10 minutes, and has been 24/7 for just over 2 months at the time of writing. After building in some error checking in case the internet connection went down, or the target website hung, the script very rarely errors; and if it does, I get a notification, so that I can quickly get it up and running again. <br/> <br/>
+                Overall this project was a really interesting way to enhance my Python skills. Tackling new modules including Beautiful Soup was a good challenge and has provided me with some very powerful web scraping skills that could be used for a whole variety of purposes! Feel free to contact me if you are interested in the script, or have any questions.
             </p>
         </section>
 
