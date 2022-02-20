@@ -49,7 +49,7 @@ modules = grades_svg.append("g")
         .attr("transform", function(d) { return (grades_x(d.module) + grades_x.bandwidth() / 2 + Math.PI) % (2 * Math.PI) < Math.PI ? "rotate(180)" : "rotate(0)"; })
         .style("font-size", "11px")
         .attr("alignment-baseline", "middle")
-        .attr("opacity","0")
+        .attr("opacity","0.5")
 
 grades = grades_svg.append("g")
       .selectAll("g")
