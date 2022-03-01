@@ -1,4 +1,5 @@
 Country,Value
+Start Total,0
 United States,12394
 Russia,6148
 Germany (FRG),-1653
@@ -9,3 +10,4 @@ Spain,-814
 Netherlands,1167
 Italy,660
 Israel,1263
+End Total,21410
