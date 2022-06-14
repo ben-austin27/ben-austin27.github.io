@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ben Austin > Stock Wiki</title>
+        <link rel = "stylesheet"
+        href = "https://cdnjs.cloudfare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+        <link rel = "stylesheet"
+        href = "https://cdnjs.cloudfare.com/ajas/libs/font-awesome/5.11.2/css/all.css"
+        integrity = "sha256-46qynGAkLSFpVbEBog43gvNhfr0j+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
+        <script src="https://kit.fontawesome.com/1d82a883f3.js" crossorigin="anonymous"></script>
+        <script src="https://d3js.org/d3.v3.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans+Pro:300,900&display=swap" rel="stylesheet">
+        <link rel = "stylesheet" href = "css/style.css">
+    </head>
+    <body>
+        <header>
+            <div class= "logo">
+                <li class= "logo-list">
+                    <a class = "logo" href = "index.html">
+                        <i class="fas fa-bold"></i>
+                    </a>
+                </li>
+            </div>
+            <button class = "nav-toggle" aria-label="toggle navigation">
+                <span class = "hamburger"></span>
+            </button>
+            <nav class = "nav">
+                <ul class="nav__list">
+                    <li class = "nav__item"><a href = "index.html" class = "nav__link">Home</a></li>
+                    <li class = "nav__item"><a href = "index.html#services" class = "nav__link">My Services</a></li>
+                    <li class = "nav__item"><a href = "index.html#about" class = "nav__link">About me</a></li>
+                    <li class = "nav__item"><a href = "index.html#work" class = "nav__link">My Work</a></li>
+                    <li class = "nav__item"><a href = "d3_page.html" class = "nav__link">d3.js</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="intro" id="home">
+            <h1 class = "section__title section__title--intro">
+                Stock Analysis using <strong>REST</strong>
+            </h1>
+            <p class = "section__subtitle section__subtitle--intro"></p>
+            <img src="img/api-2.png" class = "intro__image">
+        </section>
+
+
+        <!-- d3 content -->
+
+        <section class = "d3-post">
+            <div class = "d3-post d3-post--subtitle">
+                <p class = "d3-post d3-post--subtitle--text">
+                    Stock Analysis using Page Hits
+                </p>
+            </div>
+            <p class = "d3-post d3-post--content--text">
+                For this mini project I wanted to see if I could analyse the performance of a stock using page hits to Wikipedia. This is a technique that I have seen used by a few others on the internet, but I wanted to see if I could do it from scratch using JavaScript. Wikipedia has a REST API which allows access to page views. I wanted to see if these correlated with the stock price of differnet companies.
+            </p>
+            <script>
+                var myHeaders = new Headers();
+                myHeaders.append("Accept", "application/json");
+                myHeaders.append("Referer", "https://wikimedia.org/api/rest_v1/");
+                myHeaders.append("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.5 Safari/605.1.15");
+
+                var requestOptions = {
+                method: 'GET',
+                headers: myHeaders,
+                redirect: 'follow'
+                };
+
+                fetch("https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/all-access/all-agents/Apple_Inc./daily/20220101/20220601", requestOptions)
+                .then(response => response.text())
+                .then(result => console.log(result))
+                .catch(error => console.log('error', error));
+            </script>
+            </div>
+        </section>
+
+        <footer class = "footer">
+            <a href="mailto:benaustin27@gmail.com" class = "footer__link">benaustin27@gmail.com</a>
+            <ul class = "social-list">
+                <li class = "social-list__item">
+                    <a class = "social-list__link" href = "facebook.com">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </li>
+                <li class = "social-list__item">
+                    <a class = "social-list__link" href = "instagram.com">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </li>
+                <li class = "social-list__item">
+                    <a class = "social-list__link" href = "github.com">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </li>
+            </ul>
+        </footer>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.js" integrity="sha512-UgS0SVyy/0fZ0i48Rr7gKpnP+Jio3oC7M4XaKP3BJUB/guN6Zr4BjU0Hsle0ey2HJvPLHE5YQCXTDrx27Lhe7A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="js/index.js"></script>
+        </div>
+    </body>
+</html>
