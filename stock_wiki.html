@@ -97,8 +97,31 @@
                 for (i=0; i<data.length; i++) {
                     data[i]['row'] = i
                 }
-                console.log(data);
+
+                var x = d3.scaleLinear()
+                    .domain([0,data.length])
+                    .range([ 0, width ]);
+                svg.append("g")
+                    .attr("transform", "translate(0," + height + ")")
+                    .call(d3.axisBottom(x));
+
+                    // Add Y axis
+                var y = d3.scaleLinear()
+                    .domain([0, d3.max(data, function(d) { return +d.views; })])
+                    .range([ height, 0 ]);
+                svg.append("g")
+                    .call(d3.axisLeft(y));
                 
+                svg.append("path")
+                    .datum(data)
+                    .attr("fill", "none")
+                    .attr("stroke", "steelblue")
+                    .attr("stroke-width", 1.5)
+                    .attr("d", d3.line()
+                        .x(function(d) { return x(d.row) })
+                        .y(function(d) { return y(d.views) })
+                        );
+                console.log(data);
                 })
                 .catch(error => console.log('error', error));
 
