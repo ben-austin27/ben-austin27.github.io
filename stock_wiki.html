@@ -51,12 +51,18 @@
         <section class = "d3-post">
             <div class = "d3-post d3-post--subtitle">
                 <p class = "d3-post d3-post--subtitle--text">
+                    This page will only work in Chrome
+                </p>
+            </div>
+            <div class = "d3-post d3-post--subtitle">
+                <p class = "d3-post d3-post--subtitle--text">
                     Stock Analysis using Page Hits
                 </p>
             </div>
             <p class = "d3-post d3-post--content--text">
                 For this mini project I wanted to see if I could analyse the performance of a stock using page hits to Wikipedia. This is a technique that I have seen used by a few others on the internet, but I wanted to see if I could do it from scratch using JavaScript. Wikipedia has a REST API which allows access to page views. I wanted to see if these correlated with the stock price of differnet companies.
             </p>
+            <div class = "my_dataviz"></div>
             <script>
                 var myHeaders = new Headers();
                 myHeaders.append("Accept", "application/json");
@@ -71,8 +77,32 @@
 
                 fetch("https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/all-access/all-agents/Apple_Inc./daily/20220101/20220601", requestOptions)
                 .then(response => response.text())
-                .then(result => console.log(result))
+                .then(function(result) {
+
+                var margin = {top: 10, right: 30, bottom: 30, left: 60},
+                    width = 460 - margin.left - margin.right,
+                    height = 400 - margin.top - margin.bottom;
+
+                // append the svg object to the body of the page
+                var svg = d3.select("#my_dataviz")
+                .append("svg")
+                    .attr("width", width + margin.left + margin.right)
+                    .attr("height", height + margin.top + margin.bottom)
+                .append("g")
+                    .attr("transform",
+                        "translate(" + margin.left + "," + margin.top + ")");
+
+                data = JSON.parse(result);
+                data = data.items;
+                for (i=0; i<data.length; i++) {
+                    data[i]['row'] = i
+                }
+                console.log(data);
+                
+                })
                 .catch(error => console.log('error', error));
+
+                
             </script>
             </div>
         </section>
