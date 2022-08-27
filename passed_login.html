@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ben Austin > Welcome</title>
+        <link rel = "stylesheet"
+        href = "https://cdnjs.cloudfare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+        <link rel = "stylesheet"
+        href = "https://cdnjs.cloudfare.com/ajas/libs/font-awesome/5.11.2/css/all.css"
+        integrity = "sha256-46qynGAkLSFpVbEBog43gvNhfr0j+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
+        <script src="https://kit.fontawesome.com/1d82a883f3.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans+Pro:300,900&display=swap" rel="stylesheet">
+        <link rel = "stylesheet" href = "css/style.css">
+        <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+    </head>
+    <body>
+        <header>
+            <div class= "logo">
+                <li class= "logo-list">
+                    <a class = "logo" href = "index.html">
+                        <i class="fas fa-bold"></i>
+                    </a>
+                </li>
+            </div>
+
+            <button class = "nav-toggle" aria-label="toggle navigation">
+                <span class = "hamburger"></span>
+            </button>
+            <nav class = "nav">
+                <ul class="nav__list">
+                    <li class = "nav__item"><a href = "index.html" class = "nav__link">Home</a></li>
+                    <li class = "nav__item"><a href = "index.html#services" class = "nav__link">My Services</a></li>
+                    <li class = "nav__item"><a href = "index.html#about" class = "nav__link">About me</a></li>
+                    <li class = "nav__item"><a href = "index.html#work" class = "nav__link">My Work</a></li>
+                    <li class = "nav__item"><a href = "d3_page.html" class = "nav__link">d3.js</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="intro" id="home">
+            <h1 class = "section__title section__title--intro">
+                <strong>Welcome</strong>
+            </h1>
+            <p class = "section__subtitle section__subtitle--intro">
+                Logged In
+            </p>
+            <img src="img/padlock_unlocked.png" class = "intro__image">
+        </section>
+
+        <div class = "d3-post d3-post--subtitle">
+            <p class = "d3-post d3-post--subtitle--text">
+                Random Recipe
+            </p>
+        </div>
+        <!-- Target to produce recipe table -->
+        <div class = "portfolio-item-individual">
+
+        </div>
+
+        <footer class = "footer">
+            <a href="mailto:benaustin27@gmail.com" class = "footer__link">benaustin27@gmail.com</a>
+            <ul class = "social-list">
+                <li class = "social-list__item">
+                    <a class = "social-list__link" href = "facebook.com">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </li>
+                <li class = "social-list__item">
+                    <a class = "social-list__link" href = "instagram.com">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </li>
+                <li class = "social-list__item">
+                    <a class = "social-list__link" href = "github.com">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </li>
+            </ul>
+        </footer>
+
+        <script src="js/index.js"></script>
+        <script type='text/javascript' src='js/d3_rand_recipe.js'></script>
+    </body>
+</html>

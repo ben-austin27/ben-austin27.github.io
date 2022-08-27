@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ben Austin > Login</title>
+        <link rel = "stylesheet"
+        href = "https://cdnjs.cloudfare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+        <link rel = "stylesheet"
+        href = "https://cdnjs.cloudfare.com/ajas/libs/font-awesome/5.11.2/css/all.css"
+        integrity = "sha256-46qynGAkLSFpVbEBog43gvNhfr0j+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
+        <script src="https://kit.fontawesome.com/1d82a883f3.js" crossorigin="anonymous"></script>
+
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans+Pro:300,900&display=swap" rel="stylesheet">
+
+        <link rel = "stylesheet" href = "css/style.css">
+    </head>
+    <body>
+        <header>
+            <div class= "logo">
+                <li class= "logo-list">
+                    <a class = "logo" href = "index.html">
+                        <i class="fas fa-bold"></i>
+                    </a>
+                </li>
+            </div>
+
+            <button class = "nav-toggle" aria-label="toggle navigation">
+                <span class = "hamburger"></span>
+            </button>
+            <nav class = "nav">
+                <ul class="nav__list">
+                    <li class = "nav__item"><a href = "index.html" class = "nav__link">Home</a></li>
+                    <li class = "nav__item"><a href = "index.html#services" class = "nav__link">My Services</a></li>
+                    <li class = "nav__item"><a href = "index.html#about" class = "nav__link">About me</a></li>
+                    <li class = "nav__item"><a href = "index.html#work" class = "nav__link">My Work</a></li>
+                    <li class = "nav__item"><a href = "d3_page.html" class = "nav__link">d3.js</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="intro" id="home">
+            <h1 class = "section__title section__title--intro">
+                <strong>Login Page</strong>
+            </h1>
+            <p class = "section__subtitle section__subtitle--intro">
+                Login below
+            </p>
+            <img src="img/padlock.jpg" class = "intro__image">
+        </section>
+
+        <div class = "portfolio-item-individual">
+            <form class = "login-box">
+                <label for="pswd">Enter your password: </label>
+                <input type="password" id="pswd">
+                <input type="button" value="Submit" onclick="checkPswd();"/>
+            </form>
+            
+            <script type="text/javascript">
+                function checkPswd() {
+                    var confirmPassword = "recipe";
+                    var password = document.getElementById("pswd").value;
+                    if (password == confirmPassword) {
+                         window.location="passed_login.html";
+                    }
+                    else{
+                        alert("Passwords do not match.");
+                    }
+                }
+            </script>
+        </div>
+
+
+        <footer class = "footer">
+            <a href="mailto:benaustin27@gmail.com" class = "footer__link">benaustin27@gmail.com</a>
+            <ul class = "social-list">
+                <li class = "social-list__item">
+                    <a class = "social-list__link" href = "facebook.com">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </li>
+                <li class = "social-list__item">
+                    <a class = "social-list__link" href = "instagram.com">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </li>
+                <li class = "social-list__item">
+                    <a class = "social-list__link" href = "github.com">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </li>
+            </ul>
+        </footer>
+
+        <script src="js/index.js"></script>
+        
+    </body>
+</html>
+
+
+<!--
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login page</title>
+</head>
+<body>
+<form>
+    <label for="pswd">Enter your password: </label>
+    <input type="password" id="pswd">
+    <input type="button" value="Submit" onclick="checkPswd();" />
+</form>
+
+<script type="text/javascript">
+    function checkPswd() {
+        var confirmPassword = "admin";
+        var password = document.getElementById("pswd").value;
+        if (password == confirmPassword) {
+             window.location="welcome.html";
+        }
+        else{
+            alert("Passwords do not match.");
+        }
+    }
+</script>
+</body>
+</html>
+
+-->
