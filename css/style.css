@@ -62,7 +62,7 @@ img {
 strong {font-weight: var(--fw-bold);}
 
 :focus {
-    outline: 3px solid var(--clr-accent);
+    outline: 1px solid var(--clr-accent);
     outline-offset: 3px;
 }
 
@@ -596,4 +596,13 @@ header {
     margin: auto;
     background-color: var(--clr-accent);
     font-weight: var(--fw-bold);
+}
+
+.login-box {
+    text-align: center;
+}
+
+.recipe_table {
+    margin-left: auto;
+    margin-right: auto;
 }
