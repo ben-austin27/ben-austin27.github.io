@@ -238,7 +238,14 @@ header {
 
 .intro__image {
     box-shadow: var(--bs);
+    transition: 
+        transform 750ms cubic-bezier(0.5,0,0.5,1);
 }
+
+.intro__image:hover {
+    transform: scale(1.05);
+}
+
 
 .section__subtitle--intro {
     display: inline-block;
