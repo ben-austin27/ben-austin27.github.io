@@ -398,7 +398,7 @@ header {
 }
 
 .portfolio__item {
-    background: var(--clr-accent);
+    background: var(--clr-light);
     overflow: hidden;
 }
 
