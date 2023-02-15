@@ -566,6 +566,11 @@ header {
     .map_svg {
         scale:calc(390/960);
     }
+
+    /* Could remove? */
+    .inline__image {
+        width: 80%;
+    }
 }
 
 @media (max-width: 600px) {
@@ -577,9 +582,14 @@ header {
 
     .map {
         padding-bottom: 0px;
-}
+    }
     .viz_map {
         height: 400px;
+    }
+
+    /* Could remove? */
+    .inline__image {
+        width: 80%;
     }
 
 }

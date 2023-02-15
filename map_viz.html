@@ -3,7 +3,7 @@
     <head>
         <meta charset = "UTF-8">
         <meta name = "viewport" content="width=device-width, initial-scale=1.0">
-        <title>Ben Austin > Web Scraping</title>
+        <title>Ben Austin > Spatial Data</title>
         <link rel = "stylesheet"
         href = "https://cdnjs.cloudfare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
         <link rel = "stylesheet"
@@ -53,7 +53,8 @@
                 </p>
             </div>
             <p class = "d3-post d3-post--content--text">
-                R and RStudio are both incredible powerful tools for analysis of large datasets. As a visualisation analyst, I was interested in how I can use the features in R, along with ggplot2 to produce stunning graphics. This page will talk about some of those visualisations and the importance of them in spatial data analysis.
+                R and RStudio are both incredible powerful tools for analysis of large datasets. As a visualisation analyst, I am interested in how I can use the features in R, along with ggplot2 to produce stunning graphics. This page will talk about some of those visualisations and the importance of them in spatial data analysis.
+                Plots and visualisations shown are all part of my Data Science module taken in my final year at the University of Bath. 
             </p>
             <div class = "d3-post d3-post--subtitle">
                 <p class = "d3-post d3-post--subtitle--text">
@@ -61,11 +62,20 @@
                 </p>
             </div>
             <p class = "d3-post d3-post--content--text">
-                Coming Soon
+                Spatial Data analysis regards relationships between data points in physical space, the majority of the time, these data points relate to real-world locations and thus we can gain insight by mapping the points.
+                We can use ggplot2 to quickly and easily map shapefiles, which encode the boundaries of locations in geometries. Below is a fictional map displaying burglary rates.
+                The code to generate a simple map is shown below.
             </p>
             <img src="img/R_CW/burg.png" alt = "" class="inline__image">
             <p class = "d3-post d3-post--content--text">
-                Coming Soon
+            </p>
+            <div class = "d3-post d3-post--code">
+                <p class = "d3-post d3-post--code--text">
+                    ggplot(data=Arrest_df) + geom_sf(aes(fill=Arrest_Prop))
+                </p>
+            </div>
+            <p class = "d3-post d3-post--content--text">
+                Mapping with shapefiles can be a useful way to conduct exploratory analysis, however other plots are more useful for drawing conclusions about spatial dependence of data.
             </p>
             <div class = "d3-post d3-post--subtitle">
                 <p class = "d3-post d3-post--subtitle--text">
@@ -73,23 +83,27 @@
                 </p>
             </div>
             <p class = "d3-post d3-post--content--text">
-                Coming Soon
+                The semi-variogram is a type of plot that can be produced in R to analyse the correlation between pairwise distance of points and their spatial relation.
+                Small values of the semi-variogram can be interpreted as points having high spatial dependence. The cutoff distance shown of 0.06 is where the semi-variogram begins to plateau, thus points beyond this distance are independent.
             </p>
             <img src="img/R_CW/semi.png" alt = "" class="inline__image">
             <p class = "d3-post d3-post--content--text">
-                Coming Soon
+                The mock data used is PM10 measurements in Manchester, we can see that spatial dependence decreases as distance increases. At small distances, the semi-variogram is small, implying strong spatial dependence.
+                We assume isotropy when estimating the semi-variogram, i.e. that the dependence between two locations is fully determined by their distance, this may be reasonable here, as PM10 is a gaseous measure.
             </p>
             <div class = "d3-post d3-post--subtitle">
                 <p class = "d3-post d3-post--subtitle--text">
-                    Kernel Intensity Functions and Quadrats
+                    Kernel Intensity Plots and Quadrants
                 </p>
             </div>
             <p class = "d3-post d3-post--content--text">
-                Coming Soon
+                Kernel Intensity Plots and Quadrants are ways that we can analyse point pattern data, i.e. when our data points do not occur at a known location. The mock data used is locations of the occurance of fictional crimes.
+                These two types of plot allow us to make judgements on whether the events occur uniformly over an area, or non-uniformly. They help us identify 'hot-spots' and 'cold-spots' across our location of interest.
             </p>
             <img src="img/R_CW/KIF.png" alt = "" class="inline__image">
             <p class = "d3-post d3-post--content--text">
-                Coming Soon
+                We can see from the Kernel Intensity plot above that there are 2 hot spots for crimes, hence the locations seem non homogeneous. These hot-spots are located in the North-East of the district, and the centre of the district. In this fictional scenario the police department should focus their efforts in these locations in order to encounter the highest prevalence of crimes. Of the two, the hot spot in the centre of the district is more intense, consequently, this would be my first recommendation for police deployment, with the hot-spot in the North-East being my second recommendation.
+
             </p>
             <div class = "d3-post d3-post--subtitle">
                 <p class = "d3-post d3-post--subtitle--text">
@@ -97,19 +111,37 @@
                 </p>
             </div>
             <p class = "d3-post d3-post--content--text">
-                Coming Soon
-            </p>
-            <img src="img/R_CW/Moran.png" alt = "" class="inline__image">
-            <p class = "d3-post d3-post--content--text">
-                Coming Soon
+                Moran's I statistic is a measure that we can use to judge the spatial dependence between lattice data, i.e. data that has been aggregated to county or distict level, often for privacy reasons. Looking back at the burglary plot above, we may want to judge whether districts near one another are correlated.
+                We can use R to run this test for us:
             </p>
             <div class = "d3-post d3-post--code">
                 <p class = "d3-post d3-post--code--text">
-                    ## [1] "Local Moran: District 31" "23.038"
+                    neighbours_arrest_uto <- nb2listw(poly2nb(Arrest_df), style="B")<br\>
+                    moran.test(x=Arrest_df$Arrest_Prop,listw=neighbours_arrest_uto)
                 </p>
             </div>
             <p class = "d3-post d3-post--content--text">
-                Coming Soon
+            </p>
+            <img src="img/R_CW/Moran.png" alt = "" class="inline__image">
+            <p class = "d3-post d3-post--content--text">
+                Observing the p-value of 9.22e-14 we have a statistically significant relationship between location and burglary rate. Rather than testing the whole map, we may want to investigate just one area comparing to it's neighbours.
+                We can use the Local Moran Statistic for this, below is the R output for the fictional District 31:
+            </p>
+            <div class = "d3-post d3-post--code">
+                <p class = "d3-post d3-post--code--text">
+                    ## [1] "Local Moran: District 31" "23.038"§
+                </p>
+            </div>
+            <p class = "d3-post d3-post--content--text">
+                23.038 is deemed as a reasonably high value for Local Moran, so we can conclude that District 31 has a high level of local spatial dependence between it's neighbours and burglary rates.
+            </p>
+            <div class = "d3-post d3-post--subtitle">
+                <p class = "d3-post d3-post--subtitle--text">
+                    Final words
+                </p>
+            </div>
+            <p class = "d3-post d3-post--content--text">
+                Spatial Data analysis is one of the most important areas of data analysis to learn about, real world data often has a location attribute attached to it. Knowing how to utilise and extract conclusions in this way will be invaluable to me throughout my analytics career.
             </p>
         </section>
 
