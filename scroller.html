@@ -38,9 +38,10 @@
             margin-right: 100px;
             margin-bottom: 50px;
             margin-top: 50px;
-            background-color: grey;
+            background-color: #E0E0E0;
             margin-left: 40px;
-            width: 500px;
+            width: 600px;
+            height: 600px;
             position: -webkit-sticky;
             position: sticky;
             top: 50px;
@@ -112,6 +113,11 @@
             <p class = "d3-post d3-post--content--text"></p>
             <p class = "d3-post d3-post--content--text"></p>
             <p class = "d3-post d3-post--content--text"></p>
+            <p class = "d3-post d3-post--content--text"></p>
+            <p class = "d3-post d3-post--content--text"></p>
+            <p class = "d3-post d3-post--content--text"></p>
+            <p class = "d3-post d3-post--content--text"></p>
+            
             
         </div>
         
@@ -162,18 +168,62 @@
               width = innerWidth
               height = innerHeight*.7
             }
-          
-            var svg = d3.select('#graph').html('')
-              .append('svg')
-                .attrs({width: width, height: height})
-          
-
+            //////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////
             // CAN CUSTOMISE FROM HERE
 
-            var circle = svg.append('circle')
-                .attrs({cx: 0, cy: 0, r: r})
+            const viz_margin = {top: 50, right: 50, bottom: 50, left: 50},
+                  viz_width = 600 - viz_margin.left - viz_margin.right,
+                  viz_height = 600 - viz_margin.top - viz_margin.bottom;
           
-            var colors = ['orange', 'purple', 'steelblue', 'pink', 'black']
+            var svg = d3.select('#graph').html('')
+                .append("svg")
+                    .attr("class","viz_svg_class")
+                    .attr("width", viz_width + viz_margin.left + viz_margin.right)
+                    .attr("height", viz_height + viz_margin.top + viz_margin.bottom)
+                .append("g")
+                    .attr("transform", `translate(${viz_margin.left},${viz_margin.top})`);
+
+
+            var scatter_x = d3.scaleLinear()
+                                .domain([0,10])
+                                .range([0,viz_width]);
+
+            var scatter_y = d3.scaleLinear()
+                                .domain([0,10])
+                                .range([viz_height,0]);
+
+            svg.append("g")
+                .attr("transform", "translate(0," + viz_height + ")")
+                .call(d3.axisBottom(scatter_x));
+
+            svg.append("g")
+                .call(d3.axisLeft(scatter_y));
+
+            var jsonCircles = [
+                    {
+                    "x": 3,
+                    "y": 3,
+                    }, {
+                    "x": 4,
+                    "y": 8,
+                    }, {
+                    "x": 9,
+                    "y": 1,
+                    }];
+
+            var points = svg.append('g')
+                .selectAll("point")
+                .data(jsonCircles)
+                .enter()
+                .append("circle")
+                    .attrs({cx: d => scatter_x(d.x), cy: viz_height, r: 6, fill: "#4bbfc9"})
+
             var gs = d3.graphScroll()
                 .container(d3.select('.container-1'))
                 .graph(d3.selectAll('container-1 #graph'))
@@ -182,16 +232,23 @@
                 // .offset(innerWidth < 900 ? innerHeight - 30 : 200)
                 .on('active', function(i){
                   console.log(i)
-                  var pos = [ {cx: width - r, cy: r, r:40},
-                              {cx: r,         cy: r, r:40},
-                              {cx: width - r, cy: height - r, r:40},
-                              {cx: width/2,   cy: height/2, r:100} ][i]
-                  
-                  circle.transition().duration(1000)
-                      .attrs(pos)
-                    .transition()
-                      .style('fill', colors[i])
+        
+                  var scatter_pos = [ {cx: d => scatter_x(d.x), cy: viz_height, r: 6, fill: "#4bbfc9"},
+                                      {cx: d => scatter_x(d.x), cy: d => scatter_y(d.y), r: 6, fill: "#4bbfc9"},
+                                      {cx: d => scatter_x(d.x), cy: d => scatter_y(d.y), r: 10, fill: "#4bbfc9"},
+                                      {cx: d => scatter_x(d.x), cy: d => scatter_y(d.y), r: 10, fill: "#FF0000"}][i]         
+                  points.transition().duration(1000)
+                        .attrs(scatter_pos)
+
                 })
+
+            //////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////
           
           }
           render()  
