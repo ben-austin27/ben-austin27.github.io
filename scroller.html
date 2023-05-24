@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content="width=device-width, initial-scale=1.0">
+        <title>Storytelling</title>
+        <script src="js/graph-scroll.js"></script>
+        <script src="js/d3v4+jetpack.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans+Pro:300,900&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/1d82a883f3.js" crossorigin="anonymous"></script>
+        
+        <link rel = "stylesheet" href = "css/style.css">
+
+        <!-- EXTRA STYLE SHEET FOR THE SCROLLER -->
+        <style>
+            #container{
+            position: relative;
+            }
+
+            #sections{
+            padding-left: 100px;
+            width: 500px;
+            }
+
+            #sections > div{
+            background: white;
+            opacity: .2;
+            margin-bottom: 200px;
+            }
+            #sections > div:last-child{
+            margin-bottom: 30px;
+            }
+            #sections > div.graph-scroll-active{
+            opacity: 1;
+            }
+
+            #graph{
+            margin-right: 100px;
+            margin-bottom: 50px;
+            margin-top: 50px;
+            background-color: grey;
+            margin-left: 40px;
+            width: 500px;
+            position: -webkit-sticky;
+            position: sticky;
+            top: 50px;
+            bottom: 50px;
+            float: right;
+            }
+        </style>
+
+    </head>
+    <body>
+        <header>
+            <div class= "logo">
+                <li class= "logo-list">
+                    <a class = "logo" href = "index.html">
+                        <i class="fas fa-bold"></i>
+                    </a>
+                </li>
+            </div>
+            <button class = "nav-toggle" aria-label="toggle navigation">
+                <span class = "hamburger"></span>
+            </button>
+            <nav class = "nav">
+                <ul class="nav__list">
+                    <li class = "nav__item"><a href = "index.html" class = "nav__link">Home</a></li>
+                    <li class = "nav__item"><a href = "index.html#services" class = "nav__link">My Services</a></li>
+                    <li class = "nav__item"><a href = "index.html#about" class = "nav__link">About me</a></li>
+                    <li class = "nav__item"><a href = "index.html#work" class = "nav__link">My Work</a></li>
+                    <li class = "nav__item"><a href = "d3_page.html" class = "nav__link">d3.js</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="intro" id="home">
+            <h1 class = "section__title section__title--intro">
+                How data tells <strong>stories</strong>
+            </h1>
+            <p class = "section__subtitle section__subtitle--intro"></p>
+            <img src="img/storytelling.png" class = "intro__image">
+        </section>
+
+        <!-- INSERT SCROLLER HERE -->
+
+        <div id='container' class='container-1'>
+            <div id='graph'></div>
+            <div id='sections'>
+                <div>
+                    <h3>Section 1</h3>
+                    graph_scroll takes a selection of explanatory text sections and dispatches <span class='mono'>active</span> events as different sections are scrolled into to view. These active events are used to update a graph's state.
+                </div>
+              
+                <div>
+                    <h3>Section 2</h3>
+                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                </div>
+                <div>
+                    <h3>Section 3</h3>
+                    graph_scroll takes a selection of explanatory text sections and dispatches <span class='mono'>active</span> events as different sections are scrolled into to view. These active events are used to update a graph's state.
+                </div>
+              
+                <div>
+                    <h3>Section 4</h3>
+                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                </div>
+            </div>
+            <p class = "d3-post d3-post--content--text"></p>
+            <p class = "d3-post d3-post--content--text"></p>
+            <p class = "d3-post d3-post--content--text"></p>
+            <p class = "d3-post d3-post--content--text"></p>
+            <p class = "d3-post d3-post--content--text"></p>
+            <p class = "d3-post d3-post--content--text"></p>
+            <p class = "d3-post d3-post--content--text"></p>
+            
+        </div>
+        
+        <div class = "d3-post d3-post--subtitle">
+            <p class = "d3-post d3-post--subtitle--text">
+                End of the scroller
+            </p>
+        </div>
+
+        <p class = "d3-post d3-post--content--text">
+            I could change the granularity of the plot using the num_bins variable to get different results.
+        </p>
+
+
+        <!-- Footer -->
+
+        <footer class = "footer">
+            <a href="mailto:benaustin27@gmail.com" class = "footer__link">benaustin27@gmail.com</a>
+            <ul class = "social-list">
+                <li class = "social-list__item">
+                    <a class = "social-list__link" href = "https://facebook.com">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </li>
+                <li class = "social-list__item">
+                    <a class = "social-list__link" href = "https://instagram.com">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </li>
+                <li class = "social-list__item">
+                    <a class = "social-list__link" href = "https://github.com">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </li>
+            </ul>
+        </footer>
+
+        <script>
+          var oldWidth = 0
+          function render(){
+            if (oldWidth == innerWidth) return
+            oldWidth = innerWidth
+          
+            var width = height = d3.select('#graph').node().offsetWidth
+            var r = 40
+          
+            if (innerWidth <= 925){
+              width = innerWidth
+              height = innerHeight*.7
+            }
+          
+            var svg = d3.select('#graph').html('')
+              .append('svg')
+                .attrs({width: width, height: height})
+          
+
+            // CAN CUSTOMISE FROM HERE
+
+            var circle = svg.append('circle')
+                .attrs({cx: 0, cy: 0, r: r})
+          
+            var colors = ['orange', 'purple', 'steelblue', 'pink', 'black']
+            var gs = d3.graphScroll()
+                .container(d3.select('.container-1'))
+                .graph(d3.selectAll('container-1 #graph'))
+                .eventId('uniqueId1')  // namespace for scroll and resize events
+                .sections(d3.selectAll('.container-1 #sections > div'))
+                // .offset(innerWidth < 900 ? innerHeight - 30 : 200)
+                .on('active', function(i){
+                  console.log(i)
+                  var pos = [ {cx: width - r, cy: r, r:40},
+                              {cx: r,         cy: r, r:40},
+                              {cx: width - r, cy: height - r, r:40},
+                              {cx: width/2,   cy: height/2, r:100} ][i]
+                  
+                  circle.transition().duration(1000)
+                      .attrs(pos)
+                    .transition()
+                      .style('fill', colors[i])
+                })
+          
+          }
+          render()  
+          </script>
+          
+        <!-- INSERT SCROLLER ABOVE HERE -->
+        <script src="js/index.js"></script>
+        </div>
+    </body>
+</html>
