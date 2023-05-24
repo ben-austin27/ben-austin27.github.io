@@ -1,3 +1,6 @@
+// The licence for free use of this code is located at:
+// https://github.com/1wheel/graph-scroll/blob/gh-pages/LICENSE
+
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('d3')) :
   typeof define === 'function' && define.amd ? define(['exports', 'd3'], factory) :
