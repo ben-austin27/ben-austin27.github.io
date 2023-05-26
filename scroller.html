@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content="width=device-width, initial-scale=1.0">
+        <title>Scroller</title>
+        <script src="js/graph-scroll.js"></script>
+        <script src="js/d3v4+jetpack.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans+Pro:300,900&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/1d82a883f3.js" crossorigin="anonymous"></script>
+        
+        <link rel = "stylesheet" href = "css/style.css">
+
+        <!-- EXTRA STYLE SHEET FOR THE SCROLLER -->
+        <style>
+
+            #container{
+            position: relative;
+            }
+
+            #sections{
+            padding-left: 100px;
+            width: 600px;
+            }
+
+            #sections > div{
+            background: white;
+            opacity: .15;
+            margin-bottom: 200px;
+            }
+            #sections > div:last-child{
+            margin-bottom: 30px;
+            }
+
+            #sections > div.graph-scroll-active{
+            opacity: 1;
+            }
+
+            #graph{
+            margin-right: 100px;
+            margin-bottom: 50px;
+            margin-top: 50px;
+            background-color: #f4f4f4;
+            margin-left: 40px;
+            width: 600px;
+            height: 600px;
+            position: -webkit-sticky;
+            position: sticky;
+            top: 100px;
+            bottom: 50px;
+            float: right;
+            }
+        </style>
+
+    </head>
+    <body>
+        <header>
+            <div class= "logo">
+                <li class= "logo-list">
+                    <a class = "logo" href = "index.html">
+                        <i class="fas fa-bold"></i>
+                    </a>
+                </li>
+            </div>
+            <button class = "nav-toggle" aria-label="toggle navigation">
+                <span class = "hamburger"></span>
+            </button>
+            <nav class = "nav">
+                <ul class="nav__list">
+                    <li class = "nav__item"><a href = "index.html" class = "nav__link">Home</a></li>
+                    <li class = "nav__item"><a href = "index.html#services" class = "nav__link">My Services</a></li>
+                    <li class = "nav__item"><a href = "index.html#about" class = "nav__link">About me</a></li>
+                    <li class = "nav__item"><a href = "index.html#work" class = "nav__link">My Work</a></li>
+                    <li class = "nav__item"><a href = "d3_page.html" class = "nav__link">d3.js</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="intro" id="home">
+            <h1 class = "section__title section__title--intro">
+                Reactive visualisation using <strong>scrolling</strong>
+            </h1>
+            <p class = "section__subtitle section__subtitle--intro"></p>
+            <img src="img/storytelling.png" class = "intro__image">
+        </section>
+
+        <!-- INSERT SCROLLER HERE -->
+
+        <div id='container' class='container-1'>
+            <div id='graph'></div>
+            <div id='sections'>
+                <div>
+                    <h3>Section 1. Blank</h3>
+                    graph_scroll takes a selection of explanatory text sections and dispatches <span class='mono'>active</span> events as different sections are scrolled into to view. These active events are used to update a graph's state.
+                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                </div>
+                <div>
+                    <h3>Section 2. Points</h3>
+                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                </div>
+                <div>
+                    <h3>Section 3. Points and Line of BF</h3>
+                    graph_scroll takes a selection of explanatory text sections and dispatches <span class='mono'>active</span> events as different sections are scrolled into to view. These active events are used to update a graph's state.
+                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                </div>
+                <div>
+                    <h3>Section 4. Coloured points</h3>
+                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                </div>
+                <div>
+                    <h3>Section 5. Clusters</h3>
+                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                </div>
+                <div>
+                    <h3>Section 6. Clusters with Centroids</h3>
+                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                </div>
+                <div>
+                    <h3>Section 7. Bar Chart</h3>
+                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                </div>
+                <div>
+                    <h3>Section 8. Perceptron</h3>
+                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                </div>
+                <div>
+                    <h3>Section 9. Perceptron no line</h3>
+                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                </div>
+                <div>
+                    <h3>Section 10. Map</h3>
+                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                </div>
+            </div>
+            <p class = "d3-post d3-post--content--text"></p>
+            <p class = "d3-post d3-post--content--text"></p>
+            <p class = "d3-post d3-post--content--text"></p>
+            <p class = "d3-post d3-post--content--text"></p>
+            
+            
+        </div>
+        
+        <div class = "d3-post d3-post--subtitle">
+            <p class = "d3-post d3-post--subtitle--text">
+                End of the scroller
+            </p>
+        </div>
+
+        <p class = "d3-post d3-post--content--text">
+            lorem ipsum
+        </p>
+
+
+        <!-- Footer -->
+
+        <footer class = "footer">
+            <a href="mailto:benaustin27@gmail.com" class = "footer__link">benaustin27@gmail.com</a>
+            <ul class = "social-list">
+                <li class = "social-list__item">
+                    <a class = "social-list__link" href = "https://facebook.com">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </li>
+                <li class = "social-list__item">
+                    <a class = "social-list__link" href = "https://instagram.com">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </li>
+                <li class = "social-list__item">
+                    <a class = "social-list__link" href = "https://github.com">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </li>
+            </ul>
+        </footer>
+
+        <script>
+          function render(){
+            //////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////
+            // CAN CUSTOMISE FROM HERE
+
+            const viz_margin = {top: 50, right: 50, bottom: 50, left: 50},
+                  viz_width = 600 - viz_margin.left - viz_margin.right,
+                  viz_height = 600 - viz_margin.top - viz_margin.bottom;
+          
+            var svg = d3.select('#graph').html('')
+                .append("svg")
+                    .attr("class","viz_svg_class")
+                    .attr("width", viz_width + viz_margin.left + viz_margin.right)
+                    .attr("height", viz_height + viz_margin.top + viz_margin.bottom)
+                .append("g")
+                    .attr("transform", `translate(${viz_margin.left},${viz_margin.top})`);
+
+
+            var scatter_x = d3.scaleLinear()
+                                .domain([0,1])
+                                .range([0,viz_width]);
+
+            var scatter_y = d3.scaleLinear()
+                                .domain([0,1])
+                                .range([viz_height,0]);
+
+            var x_axis = svg.append("g")
+                            .attr("transform", "translate(0," + viz_height + ")")
+                            .call(d3.axisBottom(scatter_x));
+
+            var y_axis = svg.append("g")
+                            .call(d3.axisLeft(scatter_y)); 
+
+            var houses = [
+                {
+                "Location": "Edinburgh",
+                "Bedrooms": 3,
+                "Bathrooms": 2,
+                "GarageBinary": 0,
+                "Receptions": 1,
+                "Type": "flat",
+                "Area": 0.288702929,
+                "Station": 0.166666667,
+                "Land": 0.196969697,
+                "Price": 0.095890411,
+                "ClusterX": 0.173468216,
+                "ClusterY": 0.200754717,
+                "ClusterCol": 1,
+                "perceptronXnumCars": 0.44258376,
+                "perceptronYyearlyTax": 0.06200745
+                },
+                {
+                "Location": "Manchester",
+                "Bedrooms": 4,
+                "Bathrooms": 3,
+                "GarageBinary": 0,
+                "Receptions": 2,
+                "Type": "semi-detached",
+                "Area": 0.414225941,
+                "Station": 0.444444444,
+                "Land": 0.424242424,
+                "Price": 0.369863014,
+                "ClusterX": 0.740020089,
+                "ClusterY": 0.343773585,
+                "ClusterCol": 2,
+                "perceptronXnumCars": 0.28732087,
+                "perceptronYyearlyTax": 0.39746203
+                },
+                {
+                "Location": "London",
+                "Bedrooms": 5,
+                "Bathrooms": 4,
+                "GarageBinary": 1,
+                "Receptions": 2,
+                "Type": "detached",
+                "Area": 0.619246862,
+                "Station": 0.722222222,
+                "Land": 0.575757576,
+                "Price": 0.643835616,
+                "ClusterX": 0.365475678,
+                "ClusterY": 0.828867925,
+                "ClusterCol": 3,
+                "perceptronXnumCars": 0.93849676,
+                "perceptronYyearlyTax": 0.96012887
+                },
+                {
+                "Location": "Edinburgh",
+                "Bedrooms": 2,
+                "Bathrooms": 1,
+                "GarageBinary": 0,
+                "Receptions": 1,
+                "Type": "flat",
+                "Area": 0.175732218,
+                "Station": 0.259259259,
+                "Land": 0.272727273,
+                "Price": 0.068493151,
+                "ClusterX": 0.10932702,
+                "ClusterY": 0.279622642,
+                "ClusterCol": 1,
+                "perceptronXnumCars": 0.10229482,
+                "perceptronYyearlyTax": 0.33946748
+                },
+                {
+                "Location": "London",
+                "Bedrooms": 4,
+                "Bathrooms": 2,
+                "GarageBinary": 1,
+                "Receptions": 2,
+                "Type": "semi-detached",
+                "Area": 0.510460251,
+                "Station": 0.537037037,
+                "Land": 0.424242424,
+                "Price": 0.315068493,
+                "ClusterX": 0.69611135,
+                "ClusterY": 0.391320755,
+                "ClusterCol": 2,
+                "perceptronXnumCars": 0.94457781,
+                "perceptronYyearlyTax": 0.41487366
+                },
+                {
+                "Location": "Manchester",
+                "Bedrooms": 6,
+                "Bathrooms": 4,
+                "GarageBinary": 0,
+                "Receptions": 3,
+                "Type": "detached",
+                "Area": 0.70292887,
+                "Station": 0.814814815,
+                "Land": 0.727272727,
+                "Price": 0.780821918,
+                "ClusterX": 0.395896111,
+                "ClusterY": 0.786226415,
+                "ClusterCol": 3,
+                "perceptronXnumCars": 0.42262143,
+                "perceptronYyearlyTax": 0.43281445
+                },
+                {
+                "Location": "Edinburgh",
+                "Bedrooms": 1,
+                "Bathrooms": 1,
+                "GarageBinary": 0,
+                "Receptions": 1,
+                "Type": "flat",
+                "Area": 0.10460251,
+                "Station": 0.074074074,
+                "Land": 0.121212121,
+                "Price": 0.04109589,
+                "ClusterX": 0.150222414,
+                "ClusterY": 0.324339623,
+                "ClusterCol": 1,
+                "perceptronXnumCars": 0.98485434,
+                "perceptronYyearlyTax": 0.05453444
+                },
+                {
+                "Location": "London",
+                "Bedrooms": 3,
+                "Bathrooms": 2,
+                "GarageBinary": 1,
+                "Receptions": 2,
+                "Type": "semi-detached",
+                "Area": 0.460251046,
+                "Station": 0.351851852,
+                "Land": 0.348484848,
+                "Price": 0.232876712,
+                "ClusterX": 0.785650739,
+                "ClusterY": 0.41490566,
+                "ClusterCol": 2,
+                "perceptronXnumCars": 0.56383914,
+                "perceptronYyearlyTax": 0.8189512
+                },
+                {
+                "Location": "Manchester",
+                "Bedrooms": 5,
+                "Bathrooms": 3,
+                "GarageBinary": 0,
+                "Receptions": 3,
+                "Type": "detached",
+                "Area": 0.807531381,
+                "Station": 0.861111111,
+                "Land": 0.878787879,
+                "Price": 0.917808219,
+                "ClusterX": 0.348974028,
+                "ClusterY": 0.871886792,
+                "ClusterCol": 3,
+                "perceptronXnumCars": 0.31088726,
+                "perceptronYyearlyTax": 0.45921421
+                },
+                {
+                "Location": "Edinburgh",
+                "Bedrooms": 2,
+                "Bathrooms": 1,
+                "GarageBinary": 1,
+                "Receptions": 1,
+                "Type": "flat",
+                "Area": 0.167364017,
+                "Station": 0.12037037,
+                "Land": 0.121212121,
+                "Price": 0.054794521,
+                "ClusterX": 0.204319128,
+                "ClusterY": 0.468113208,
+                "ClusterCol": 1,
+                "perceptronXnumCars": 0.94748473,
+                "perceptronYyearlyTax": 0.36637882
+                },
+                {
+                "Location": "Manchester",
+                "Bedrooms": 4,
+                "Bathrooms": 2,
+                "GarageBinary": 0,
+                "Receptions": 2,
+                "Type": "semi-detached",
+                "Area": 0.527196653,
+                "Station": 0.398148148,
+                "Land": 0.424242424,
+                "Price": 0.287671233,
+                "ClusterX": 0.681044626,
+                "ClusterY": 0.335660377,
+                "ClusterCol": 2,
+                "perceptronXnumCars": 0.48387677,
+                "perceptronYyearlyTax": 0.42055477
+                },
+                {
+                "Location": "London",
+                "Bedrooms": 5,
+                "Bathrooms": 3,
+                "GarageBinary": 0,
+                "Receptions": 2,
+                "Type": "detached",
+                "Area": 0.774058577,
+                "Station": 0.675925926,
+                "Land": 0.651515152,
+                "Price": 0.589041096,
+                "ClusterX": 0.414119673,
+                "ClusterY": 0.758867925,
+                "ClusterCol": 3,
+                "perceptronXnumCars": 0.6193619,
+                "perceptronYyearlyTax": 0.13528749
+                },
+                {
+                "Location": "Edinburgh",
+                "Bedrooms": 2,
+                "Bathrooms": 1,
+                "GarageBinary": 0,
+                "Receptions": 1,
+                "Type": "flat",
+                "Area": 0.184100418,
+                "Station": 0.212962963,
+                "Land": 0.272727273,
+                "Price": 0.082191781,
+                "ClusterX": 0.136160138,
+                "ClusterY": 0.431886792,
+                "ClusterCol": 1,
+                "perceptronXnumCars": 0.79063736,
+                "perceptronYyearlyTax": 0.03255071
+                },
+                {
+                "Location": "London",
+                "Bedrooms": 4,
+                "Bathrooms": 2,
+                "GarageBinary": 1,
+                "Receptions": 2,
+                "Type": "semi-detached",
+                "Area": 0.627615063,
+                "Station": 0.490740741,
+                "Land": 0.500012312,
+                "Price": 0.342465753,
+                "ClusterX": 0.715195867,
+                "ClusterY": 0.407735849,
+                "ClusterCol": 2,
+                "perceptronXnumCars": 0.72893182,
+                "perceptronYyearlyTax": 0.70718222
+                },
+                {
+                "Location": "Manchester",
+                "Bedrooms": 6,
+                "Bathrooms": 4,
+                "GarageBinary": 1,
+                "Receptions": 3,
+                "Type": "detached",
+                "Area": 0.878661088,
+                "Station": 0.768518519,
+                "Land": 0.803030303,
+                "Price": 0.863013699,
+                "ClusterX": 0.369636964,
+                "ClusterY": 0.830943396,
+                "ClusterCol": 3,
+                "perceptronXnumCars": 0.45671276,
+                "perceptronYyearlyTax": 0.8791821
+                },
+                {
+                "Location": "Edinburgh",
+                "Bedrooms": 1,
+                "Bathrooms": 1,
+                "GarageBinary": 1,
+                "Receptions": 1,
+                "Type": "flat",
+                "Area": 0.083682008,
+                "Station": 0.027777778,
+                "Land": 0.045454545,
+                "Price": 0.02739726,
+                "ClusterX": 0.188391448,
+                "ClusterY": 0.307169811,
+                "ClusterCol": 1,
+                "perceptronXnumCars": 0.73842308,
+                "perceptronYyearlyTax": 0.9403055
+                },
+                {
+                "Location": "London",
+                "Bedrooms": 3,
+                "Bathrooms": 2,
+                "GarageBinary": 0,
+                "Receptions": 2,
+                "Type": "semi-detached",
+                "Area": 0.393305439,
+                "Station": 0.305555556,
+                "Land": 0.272727273,
+                "Price": 0.205479452,
+                "ClusterX": 0.755086813,
+                "ClusterY": 0.374528302,
+                "ClusterCol": 2,
+                "perceptronXnumCars": 0.48440001,
+                "perceptronYyearlyTax": 0.10759293
+                },
+                {
+                "Location": "Manchester",
+                "Bedrooms": 5,
+                "Bathrooms": 3,
+                "GarageBinary": 1,
+                "Receptions": 3,
+                "Type": "detached",
+                "Area": 0.958158996,
+                "Station": 0.907407407,
+                "Land": 0.954545455,
+                "Price": 0.97260274,
+                "ClusterX": 0.418998422,
+                "ClusterY": 0.801698113,
+                "ClusterCol": 3,
+                "perceptronXnumCars": 0.42868947,
+                "perceptronYyearlyTax": 0.68210029
+                },
+                {
+                "Location": "Edinburgh",
+                "Bedrooms": 3,
+                "Bathrooms": 2,
+                "GarageBinary": 1,
+                "Receptions": 1,
+                "Type": "flat",
+                "Area": 0.225941423,
+                "Station": 0.166666667,
+                "Land": 0.196969697,
+                "Price": 0.082191781,
+                "ClusterX": 0.15553164,
+                "ClusterY": 0.263207547,
+                "ClusterCol": 1,
+                "perceptronXnumCars": 0.60304819,
+                "perceptronYyearlyTax": 0.72417674
+                },
+                {
+                "Location": "Manchester",
+                "Bedrooms": 4,
+                "Bathrooms": 2,
+                "GarageBinary": 1,
+                "Receptions": 2,
+                "Type": "semi-detached",
+                "Area": 0.485355649,
+                "Station": 0.444444444,
+                "Land": 0.424242424,
+                "Price": 0.260273973,
+                "ClusterX": 0.694245946,
+                "ClusterY": 0.318113208,
+                "ClusterCol": 2,
+                "perceptronXnumCars": 0.46038591,
+                "perceptronYyearlyTax": 0.96441527
+                },
+                {
+                "Location": "London",
+                "Bedrooms": 5,
+                "Bathrooms": 3,
+                "GarageBinary": 0,
+                "Receptions": 2,
+                "Type": "detached",
+                "Area": 0.686192469,
+                "Station": 0.814814815,
+                "Land": 0.727272727,
+                "Price": 0.698630137,
+                "ClusterX": 0.353996269,
+                "ClusterY": 0.850377358,
+                "ClusterCol": 3,
+                "perceptronXnumCars": 0.98615886,
+                "perceptronYyearlyTax": 0.15637243
+                },
+                {
+                "Location": "Edinburgh",
+                "Bedrooms": 2,
+                "Bathrooms": 1,
+                "GarageBinary": 0,
+                "Receptions": 1,
+                "Type": "flat",
+                "Area": 0.09623431,
+                "Station": 0.074074074,
+                "Land": 0.121212121,
+                "Price": 0.04109589,
+                "ClusterX": 0.128555029,
+                "ClusterY": 0.410943396,
+                "ClusterCol": 1,
+                "perceptronXnumCars": 0.08107742,
+                "perceptronYyearlyTax": 0.03164957
+                },
+                {
+                "Location": "London",
+                "Bedrooms": 3,
+                "Bathrooms": 2,
+                "GarageBinary": 0,
+                "Receptions": 2,
+                "Type": "semi-detached",
+                "Area": 0.376569038,
+                "Station": 0.259259259,
+                "Land": 0.196969697,
+                "Price": 0.178082192,
+                "ClusterX": 0.729258143,
+                "ClusterY": 0.373207547,
+                "ClusterCol": 2,
+                "perceptronXnumCars": 0.94793409,
+                "perceptronYyearlyTax": 0.07480284
+                },
+                {
+                "Location": "Manchester",
+                "Bedrooms": 6,
+                "Bathrooms": 4,
+                "GarageBinary": 0,
+                "Receptions": 3,
+                "Type": "detached",
+                "Area": 0.761506276,
+                "Station": 0.861111111,
+                "Land": 0.878787879,
+                "Price": 0.917808219,
+                "ClusterX": 0.387430047,
+                "ClusterY": 0.773396226,
+                "ClusterCol": 3,
+                "perceptronXnumCars": 0.02472663,
+                "perceptronYyearlyTax": 0.41387475
+                },
+                {
+                "Location": "Edinburgh",
+                "Bedrooms": 1,
+                "Bathrooms": 1,
+                "GarageBinary": 1,
+                "Receptions": 1,
+                "Type": "flat",
+                "Area": 0.016736402,
+                "Station": 0.027777778,
+                "Land": 0.045454545,
+                "Price": 0.01369863,
+                "ClusterX": 0.222829674,
+                "ClusterY": 0.370377358,
+                "ClusterCol": 1,
+                "perceptronXnumCars": 0.92230134,
+                "perceptronYyearlyTax": 0.53961109
+                },
+                {
+                "Location": "London",
+                "Bedrooms": 2,
+                "Bathrooms": 1,
+                "GarageBinary": 0,
+                "Receptions": 1,
+                "Type": "semi-detached",
+                "Area": 0.334728033,
+                "Station": 0.212962963,
+                "Land": 0.121212121,
+                "Price": 0.150684932,
+                "ClusterX": 0.677744296,
+                "ClusterY": 0.442075472,
+                "ClusterCol": 2,
+                "perceptronXnumCars": 0.56854122,
+                "perceptronYyearlyTax": 0.08373066
+                },
+                {
+                "Location": "Manchester",
+                "Bedrooms": 4,
+                "Bathrooms": 3,
+                "GarageBinary": 1,
+                "Receptions": 2,
+                "Type": "detached",
+                "Area": 0.610878661,
+                "Station": 0.722222222,
+                "Land": 0.651515152,
+                "Price": 0.643835616,
+                "ClusterX": 0.340220979,
+                "ClusterY": 0.806415094,
+                "ClusterCol": 3,
+                "perceptronXnumCars": 0.84278963,
+                "perceptronYyearlyTax": 0.82024703
+                },
+                {
+                "Location": "Edinburgh",
+                "Bedrooms": 2,
+                "Bathrooms": 1,
+                "GarageBinary": 1,
+                "Receptions": 1,
+                "Type": "flat",
+                "Area": 0.171548117,
+                "Station": 0.12037037,
+                "Land": 0.121212121,
+                "Price": 0.01369863,
+                "ClusterX": 0.172176783,
+                "ClusterY": 0.351132075,
+                "ClusterCol": 1,
+                "perceptronXnumCars": 0.39009553,
+                "perceptronYyearlyTax": 0.61230665
+                },
+                {
+                "Location": "London",
+                "Bedrooms": 3,
+                "Bathrooms": 2,
+                "GarageBinary": 1,
+                "Receptions": 2,
+                "Type": "semi-detached",
+                "Area": 0.510460251,
+                "Station": 0.351851852,
+                "Land": 0.348484848,
+                "Price": 0.232876712,
+                "ClusterX": 0.746046779,
+                "ClusterY": 0.428679245,
+                "ClusterCol": 2,
+                "perceptronXnumCars": 0.35857635,
+                "perceptronYyearlyTax": 0.79763346
+                },
+                {
+                "Location": "Manchester",
+                "Bedrooms": 5,
+                "Bathrooms": 3,
+                "GarageBinary": 0,
+                "Receptions": 3,
+                "Type": "detached",
+                "Area": 0.677824268,
+                "Station": 0.814814815,
+                "Land": 0.803030303,
+                "Price": 0.780821918,
+                "ClusterX": 0.375233175,
+                "ClusterY": 0.78509434,
+                "ClusterCol": 3,
+                "perceptronXnumCars": 0.11754761,
+                "perceptronYyearlyTax": 0.47007324
+                },
+                {
+                "Location": "Edinburgh",
+                "Bedrooms": 2,
+                "Bathrooms": 1,
+                "GarageBinary": 1,
+                "Receptions": 1,
+                "Type": "flat",
+                "Area": 0.083682008,
+                "Station": 0.074074074,
+                "Land": 0.121212121,
+                "Price": 0.04109589,
+                "ClusterX": 0.132285837,
+                "ClusterY": 0.280377358,
+                "ClusterCol": 1,
+                "perceptronXnumCars": 0.8004009,
+                "perceptronYyearlyTax": 0.42956641
+                },
+                {
+                "Location": "London",
+                "Bedrooms": 3,
+                "Bathrooms": 2,
+                "GarageBinary": 0,
+                "Receptions": 2,
+                "Type": "semi-detached",
+                "Area": 0.418410042,
+                "Station": 0.305555556,
+                "Land": 0.272727273,
+                "Price": 0.205479452,
+                "ClusterX": 0.698694217,
+                "ClusterY": 0.398867925,
+                "ClusterCol": 2,
+                "perceptronXnumCars": 0.78552615,
+                "perceptronYyearlyTax": 0.26968588
+                },
+                {
+                "Location": "Manchester",
+                "Bedrooms": 6,
+                "Bathrooms": 4,
+                "GarageBinary": 1,
+                "Receptions": 3,
+                "Type": "detached",
+                "Area": 0.79916318,
+                "Station": 0.861111111,
+                "Land": 0.878787879,
+                "Price": 0.917808219,
+                "ClusterX": 0.388577988,
+                "ClusterY": 0.844716981,
+                "ClusterCol": 3,
+                "perceptronXnumCars": 0.27263831,
+                "perceptronYyearlyTax": 0.93663799
+                },
+                {
+                "Location": "Edinburgh",
+                "Bedrooms": 1,
+                "Bathrooms": 1,
+                "GarageBinary": 1,
+                "Receptions": 1,
+                "Type": "flat",
+                "Area": 0.083682008,
+                "Station": 0.027777778,
+                "Land": 0.045454545,
+                "Price": 0.01369863,
+                "ClusterX": 0.156249103,
+                "ClusterY": 0.419622642,
+                "ClusterCol": 1,
+                "perceptronXnumCars": 0.14047699,
+                "perceptronYyearlyTax": 0.83889045
+                },
+                {
+                "Location": "London",
+                "Bedrooms": 2,
+                "Bathrooms": 1,
+                "GarageBinary": 0,
+                "Receptions": 1,
+                "Type": "semi-detached",
+                "Area": 0.364016736,
+                "Station": 0.259259259,
+                "Land": 0.196969697,
+                "Price": 0.150684932,
+                "ClusterX": 0.720361601,
+                "ClusterY": 0.32754717,
+                "ClusterCol": 2,
+                "perceptronXnumCars": 0.11398141,
+                "perceptronYyearlyTax": 0.07132467
+                },
+                {
+                "Location": "Manchester",
+                "Bedrooms": 5,
+                "Bathrooms": 3,
+                "GarageBinary": 0,
+                "Receptions": 3,
+                "Type": "detached",
+                "Area": 0.778242678,
+                "Station": 0.814814815,
+                "Land": 0.803030303,
+                "Price": 0.863013699,
+                "ClusterX": 0.356866121,
+                "ClusterY": 0.820566038,
+                "ClusterCol": 3,
+                "perceptronXnumCars": 0.60694108,
+                "perceptronYyearlyTax": 0.13702043
+                },
+                {
+                "Location": "Edinburgh",
+                "Bedrooms": 2,
+                "Bathrooms": 1,
+                "GarageBinary": 1,
+                "Receptions": 1,
+                "Type": "flat",
+                "Area": 0.150627615,
+                "Station": 0.12037037,
+                "Land": 0.121212121,
+                "Price": 0.054794521,
+                "ClusterX": 0.189682881,
+                "ClusterY": 0.245660377,
+                "ClusterCol": 1,
+                "perceptronXnumCars": 0.35236841,
+                "perceptronYyearlyTax": 0.85019585
+                },
+                {
+                "Location": "London",
+                "Bedrooms": 4,
+                "Bathrooms": 2,
+                "GarageBinary": 1,
+                "Receptions": 2,
+                "Type": "semi-detached",
+                "Area": 0.59832636,
+                "Station": 0.444444444,
+                "Land": 0.424242424,
+                "Price": 0.287671233,
+                "ClusterX": 0.765561774,
+                "ClusterY": 0.399811321,
+                "ClusterCol": 2,
+                "perceptronXnumCars": 0.84275783,
+                "perceptronYyearlyTax": 0.43383363
+                },
+                {
+                "Location": "Manchester",
+                "Bedrooms": 6,
+                "Bathrooms": 4,
+                "GarageBinary": 1,
+                "Receptions": 3,
+                "Type": "detached",
+                "Area": 0.920502092,
+                "Station": 0.861111111,
+                "Land": 0.878787879,
+                "Price": 0.97260274,
+                "ClusterX": 0.409384417,
+                "ClusterY": 0.776603774,
+                "ClusterCol": 3,
+                "perceptronXnumCars": 0.62550184,
+                "perceptronYyearlyTax": 0.74714404
+                },
+                {
+                "Location": "Edinburgh",
+                "Bedrooms": 1,
+                "Bathrooms": 1,
+                "GarageBinary": 1,
+                "Receptions": 1,
+                "Type": "flat",
+                "Area": 0.037656904,
+                "Station": 0.027777778,
+                "Land": 0.045454545,
+                "Price": 0.01369863,
+                "ClusterX": 0.14233032,
+                "ClusterY": 0.293773585,
+                "ClusterCol": 1,
+                "perceptronXnumCars": 0.75751656,
+                "perceptronYyearlyTax": 0.60812206
+                },
+                {
+                "Location": "London",
+                "Bedrooms": 2,
+                "Bathrooms": 1,
+                "GarageBinary": 0,
+                "Receptions": 1,
+                "Type": "semi-detached",
+                "Area": 0.326359833,
+                "Station": 0.212962963,
+                "Land": 0.121212121,
+                "Price": 0.150684932,
+                "ClusterX": 0.691376094,
+                "ClusterY": 0.465660377,
+                "ClusterCol": 2,
+                "perceptronXnumCars": 0.49181969,
+                "perceptronYyearlyTax": 0.45200847
+                },
+                {
+                "Location": "Manchester",
+                "Bedrooms": 4,
+                "Bathrooms": 3,
+                "GarageBinary": 1,
+                "Receptions": 2,
+                "Type": "detached",
+                "Area": 0.589958159,
+                "Station": 0.722222222,
+                "Land": 0.727272727,
+                "Price": 0.643835616,
+                "ClusterX": 0.366623619,
+                "ClusterY": 0.879622642,
+                "ClusterCol": 3,
+                "perceptronXnumCars": 0.27811653,
+                "perceptronYyearlyTax": 0.65472109
+                },
+                {
+                "Location": "Edinburgh",
+                "Bedrooms": 2,
+                "Bathrooms": 1,
+                "GarageBinary": 1,
+                "Receptions": 1,
+                "Type": "flat",
+                "Area": 0.171548117,
+                "Station": 0.12037037,
+                "Land": 0.121212121,
+                "Price": 0.068493151,
+                "ClusterX": 0.162275793,
+                "ClusterY": 0.240754717,
+                "ClusterCol": 1,
+                "perceptronXnumCars": 0.08573866,
+                "perceptronYyearlyTax": 0.95841787
+                },
+                {
+                "Location": "London",
+                "Bedrooms": 3,
+                "Bathrooms": 2,
+                "GarageBinary": 1,
+                "Receptions": 2,
+                "Type": "semi-detached",
+                "Area": 0.523012552,
+                "Station": 0.351851852,
+                "Land": 0.348484848,
+                "Price": 0.232876712,
+                "ClusterX": 0.712326015,
+                "ClusterY": 0.353962264,
+                "ClusterCol": 2,
+                "perceptronXnumCars": 0.7240414,
+                "perceptronYyearlyTax": 0.44539301
+                },
+                {
+                "Location": "Manchester",
+                "Bedrooms": 5,
+                "Bathrooms": 3,
+                "GarageBinary": 0,
+                "Receptions": 3,
+                "Type": "detached",
+                "Area": 0.673640167,
+                "Station": 0.814814815,
+                "Land": 0.803030303,
+                "Price": 0.780821918,
+                "ClusterX": 0.344095279,
+                "ClusterY": 0.826415094,
+                "ClusterCol": 3,
+                "perceptronXnumCars": 0.8429949,
+                "perceptronYyearlyTax": 0.07452651
+                },
+                {
+                "Location": "Edinburgh",
+                "Bedrooms": 2,
+                "Bathrooms": 1,
+                "GarageBinary": 1,
+                "Receptions": 1,
+                "Type": "flat",
+                "Area": 0.10041841,
+                "Station": 0.074074074,
+                "Land": 0.121212121,
+                "Price": 0.04109589,
+                "ClusterX": 0.172320276,
+                "ClusterY": 0.268679245,
+                "ClusterCol": 1,
+                "perceptronXnumCars": 0.61963601,
+                "perceptronYyearlyTax": 0.77879208
+                }
+                ]
+
+            var colors = ['#000000','#FF0000','#0000FF','#FFA500','#589197','#70A9A1','#CFD7C7']
+
+            var bar_y = d3.scaleBand()
+                    .range([ viz_height, 0])
+                    .domain(houses.map(d => d.Type))
+                    .padding(0.2);
+
+            var bar_y_axis = svg.append("g")
+                    .call(d3.axisLeft(bar_y).tickSize(0))
+                    .selectAll("text")
+                        .attr("transform", "translate(-15,0)rotate(-90)")
+                        .style("text-anchor", "middle");
+            
+            var map = svg
+                .append('g')
+                .append('svg:image')
+                    .attr('xlink:href', function (d) {return 'img/euston_grey.png'})
+                    .attr('x', 0)
+                    .attr('y', 0)
+                    .attr('width',viz_width)
+                    .attr('opacity',0);
+
+            var points = svg.append('g')
+                .selectAll("point")
+                .data(houses)
+                .enter()
+                .append("circle")
+                    .attrs({cx: d => scatter_x(d.Area), cy: viz_height, r: 3, fill: "#4bbfc9", opacity:0})
+
+            var line_of_bf = svg.append('g')
+                .append('line')
+                .style("stroke", "black")
+                .style("stroke-width", 3)
+                .attrs({'x1':scatter_x(0),'y1':scatter_y(0),'x2':scatter_x(1),'y2':scatter_y(0),'stroke-opacity':0})
+
+            var centroid_centres =[{x:0.18,y:0.333,"ClusterCol": 1,r:'80px'},
+                                   {x:0.721,y:0.385,"ClusterCol": 2,r:'55px'},
+                                   {x:0.3757,y:0.816,"ClusterCol": 3,r:'45px'}]
+
+            var centroids = svg.append('g')
+                .selectAll("centroid")
+                .data(centroid_centres)
+                .enter()
+                .append('circle')
+                    .attrs({cx: d=> scatter_x(d.x),cy:d => scatter_y(d.y),r:0,fill: d => colors[d.ClusterCol],opacity:0.3})
+
+            var bar_data = [{'Type':'flat','avg':1.81/6,'ClusterCol':1},
+                            {'Type':'detached','avg':5.2/6,'ClusterCol':3},
+                            {'Type':'semi-detached','avg':3.2/6,'ClusterCol':2}]
+
+            var viz_bars = svg.append('g')
+                .selectAll("mybar")
+                .data(bar_data)
+                .enter()
+                .append("rect")
+                    .attr("x", d => scatter_x(0))
+                    .attr("y", d => bar_y(d.Type))
+                    .attr("height", bar_y.bandwidth())
+                    .attr("width", 0)
+                    .attr("fill", d => colors[d.ClusterCol])
+                    .attr('opacity',0.8)
+
+
+            var gs = d3.graphScroll()
+                .container(d3.select('.container-1'))
+                .graph(d3.selectAll('container-1 #graph'))
+                .sections(d3.selectAll('.container-1 #sections > div'))
+                .on('active', function(i){
+                    console.log(i)
+        
+                    // what attributes to use at each section:
+
+                    var scatter_pos = [ {cx: d => scatter_x(d.Area), cy: viz_height, r: 5, fill: colors[0], opacity:0},
+                                        {cx: d => scatter_x(d.Area), cy: d => scatter_y(d.Price), r: 5, fill: colors[0], opacity:1},
+                                        {cx: d => scatter_x(d.Area), cy: d => scatter_y(d.Price), r: 5, fill: colors[0], opacity:1},
+                                        {cx: d => scatter_x(d.Area), cy: d => scatter_y(d.Price), r: 5, fill: d => colors[d.ClusterCol], opacity:1},
+                                        {cx: d => scatter_x(d.ClusterX), cy: d => scatter_y(d.ClusterY), r: 5, fill: d => colors[d.ClusterCol], opacity:1},
+                                        {cx: d => scatter_x(d.ClusterX), cy: d => scatter_y(d.ClusterY), r: 5, fill: d => colors[d.ClusterCol], opacity:1},
+                                        {cx: d => scatter_x(0), cy: d => scatter_y(d.perceptronYyearlyTax), r: 5, fill: '#000000', opacity:0},
+                                        {cx: d => scatter_x(d.perceptronXnumCars), cy: d => scatter_y(d.perceptronYyearlyTax), r: 5, fill: d=>colors[d.GarageBinary+1], opacity:1},
+                                        {cx: d => scatter_x(d.perceptronXnumCars), cy: d => scatter_y(d.perceptronYyearlyTax), r: 5, fill: d=>colors[d.GarageBinary+1], opacity:1},
+                                        {cx: d => scatter_x(d.Station), cy: d => scatter_y(d.Price*0.8), r: 5, fill: '#FF0000', opacity:1}][i]         
+                  
+                    var centroid_pos = [{cx: d=> scatter_x(d.x),cy:d => scatter_y(d.y),r:"0px", fill: d => colors[d.ClusterCol],opacity:0},
+                                        {cx: d=> scatter_x(d.x),cy:d => scatter_y(d.y),r:"0px", fill: d => colors[d.ClusterCol],opacity:0},
+                                        {cx: d=> scatter_x(d.x),cy:d => scatter_y(d.y),r:"0px", fill: d => colors[d.ClusterCol],opacity:0},
+                                        {cx: d=> scatter_x(d.x),cy:d => scatter_y(d.y),r:"0px", fill: d => colors[d.ClusterCol],opacity:0},
+                                        {cx: d=> scatter_x(d.x),cy:d => scatter_y(d.y),r:"0px", fill: d => colors[d.ClusterCol],opacity:0},
+                                        {cx: d=> scatter_x(d.x),cy:d => scatter_y(d.y),r:d=>d.r, fill: d => colors[d.ClusterCol],opacity:0.3},
+                                        {cx: d=> scatter_x(d.x),cy:d => scatter_y(d.y),r:"0px", fill: d => colors[d.ClusterCol],opacity:0.3},
+                                        {cx: d=> scatter_x(d.x),cy:d => scatter_y(d.y),r:"0px", fill: d => colors[d.ClusterCol],opacity:0},
+                                        {cx: d=> scatter_x(d.x),cy:d => scatter_y(d.y),r:"0px", fill: d => colors[d.ClusterCol],opacity:0},
+                                        {cx: d=> scatter_x(d.x),cy:d => scatter_y(d.y),r:"0px", fill: d => colors[d.ClusterCol],opacity:0}][i]
+                    
+                    
+                    var line_of_bf_pos = [  {'x1':scatter_x(0.3),'y1':scatter_y(0.05),'x2':scatter_x(0.3),'y2':scatter_y(0.05),'stroke-opacity':0},
+                                            {'x1':scatter_x(0.3),'y1':scatter_y(0.05),'x2':scatter_x(0.3),'y2':scatter_y(0.05),'stroke-opacity':0},
+                                            {'x1':scatter_x(0.3),'y1':scatter_y(0.05),'x2':scatter_x(0.9),'y2':scatter_y(1),'stroke-opacity':0.8},
+                                            {'x1':scatter_x(0.9),'y1':scatter_y(1),'x2':scatter_x(0.9),'y2':scatter_y(1),'stroke-opacity':0},
+                                            {'x1':scatter_x(0),'y1':scatter_y(0),'x2':scatter_x(0),'y2':scatter_y(0),'stroke-opacity':0},
+                                            {'x1':scatter_x(0),'y1':scatter_y(0),'x2':scatter_x(0),'y2':scatter_y(0),'stroke-opacity':0},
+                                            {'x1':scatter_x(0),'y1':scatter_y(0.7),'x2':scatter_x(0),'y2':scatter_y(0.7),'stroke-opacity':0},
+                                            {'x1':scatter_x(0),'y1':scatter_y(0.7),'x2':scatter_x(0),'y2':scatter_y(0.7),'stroke-opacity':0},
+                                            {'x1':scatter_x(0),'y1':scatter_y(0.7),'x2':scatter_x(1),'y2':scatter_y(0.3),'stroke-opacity':1},
+                                            {'x1':scatter_x(1),'y1':scatter_y(0.3),'x2':scatter_x(1),'y2':scatter_y(0.3),'stroke-opacity':0}][i]
+                    
+                    var bar_pos = [0,0,0,0,0,0, d => scatter_x(d.avg),0,0,0][i]
+
+                    // just changing some opacities
+                    var map_opacity = [0,0,0,0,0,0,0,0,0,1][i]     
+                    var xaxis_opacity = [1,1,1,1,1,1,1,1,1,0][i]
+                    var yaxis_opacity = [1,1,1,1,1,1,0,1,1,0][i]
+                    var bar_yaxis_opacity = [0,0,0,0,0,0,1,0,0,0][i]
+
+                    // the transitions
+
+                    map.transition().duration(1000)
+                        .attr('opacity',map_opacity);
+
+                    points.transition().duration(1000)
+                        .attrs(scatter_pos)
+
+                    centroids.transition().duration(1000)
+                        .attrs(centroid_pos)
+
+                    line_of_bf.transition().duration(1000)
+                        .attrs(line_of_bf_pos)
+
+                    x_axis.transition().duration(1000)
+                        .attr('opacity',xaxis_opacity)
+
+                    y_axis.transition().duration(1000)
+                        .attr('opacity',yaxis_opacity)
+
+                    bar_y_axis.transition().duration(1000)
+                        .attr('opacity',bar_yaxis_opacity)
+
+                    viz_bars.transition().duration(1000)
+                        .attr('width',bar_pos)
+
+                })
+
+            //////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////
+          }
+          render()  
+          </script>
+          
+        <!-- INSERT SCROLLER ABOVE HERE -->
+        <script src="js/index.js"></script>
+        </div>
+    </body>
+</html>
