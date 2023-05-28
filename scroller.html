@@ -81,8 +81,24 @@
                 Reactive visualisation using <strong>scrolling</strong>
             </h1>
             <p class = "section__subtitle section__subtitle--intro"></p>
-            <img src="img/storytelling.png" class = "intro__image">
+            <img src="img/scroller.png" class = "intro__image">
         </section>
+
+        <div class = "d3-post d3-post--subtitle">
+            <p class = "d3-post d3-post--subtitle--text">
+                Spatial Data in R
+            </p>
+        </div>
+        <p class = "d3-post d3-post--content--text">
+            R and RStudio are both incredible powerful tools for analysis of large datasets. As a visualisation analyst, I am interested in how I can use the features in R, along with ggplot2 to produce stunning graphics. This page will talk about some of those visualisations and the importance of them in spatial data analysis.
+            Plots and visualisations shown are all part of my Data Science module taken in my final year at the University of Bath. 
+        </p>
+        <div class = "d3-post d3-post--subtitle">
+            <p class = "d3-post d3-post--subtitle--text">
+                Scrolling with housing data
+            </p>
+        </div>
+        <p class = "d3-post d3-post--content--text"></p>
 
         <!-- INSERT SCROLLER HERE -->
 
@@ -160,6 +176,9 @@
                     The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
                 </div>
             </div>
+            <p class = "d3-post d3-post--content--text"></p>
+            <p class = "d3-post d3-post--content--text"></p>
+            <p class = "d3-post d3-post--content--text"></p>
             <p class = "d3-post d3-post--content--text"></p>
             <p class = "d3-post d3-post--content--text"></p>
             <p class = "d3-post d3-post--content--text"></p>
@@ -1042,6 +1061,15 @@
                     .attr('y', 0)
                     .attr('width',viz_width)
                     .attr('opacity',0);
+            
+            var house_img = svg
+                .append('g')
+                .append('svg:image')
+                    .attr('xlink:href', function (d) {return 'img/house_birdeye.png'})
+                    .attr('x', 0)
+                    .attr('y', 0)
+                    .attr('width',viz_width)
+                    .attr('opacity',1);
 
             var points = svg.append('g')
                 .selectAll("point")
@@ -1049,6 +1077,15 @@
                 .enter()
                 .append("circle")
                     .attrs({cx: d => scatter_x(d.Area), cy: viz_height, r: 3, fill: "#4bbfc9", opacity:0})
+
+            var pearsons_corr = 0.9321712
+
+            var pearsons_text = svg.append('g')
+                .append('text')
+                .text(String("PMCC: " + pearsons_corr + " (p < 2.2e-16)"))
+                .attr('x', scatter_x(0.1))
+                .attr('y', scatter_y(0.9))
+                .attr('opacity',0)
 
             var line_of_bf = svg.append('g')
                 .append('line')
@@ -1116,10 +1153,10 @@
                                         {cx: d=> scatter_x(d.x),cy:d => scatter_y(d.y),r:"0px", fill: d => colors[d.ClusterCol],opacity:0}][i]
                     
                     
-                    var line_of_bf_pos = [  {'x1':scatter_x(0.3),'y1':scatter_y(0.05),'x2':scatter_x(0.3),'y2':scatter_y(0.05),'stroke-opacity':0},
-                                            {'x1':scatter_x(0.3),'y1':scatter_y(0.05),'x2':scatter_x(0.3),'y2':scatter_y(0.05),'stroke-opacity':0},
-                                            {'x1':scatter_x(0.3),'y1':scatter_y(0.05),'x2':scatter_x(0.9),'y2':scatter_y(1),'stroke-opacity':0.8},
-                                            {'x1':scatter_x(0.9),'y1':scatter_y(1),'x2':scatter_x(0.9),'y2':scatter_y(1),'stroke-opacity':0},
+                    var line_of_bf_pos = [  {'x1':scatter_x(0.14),'y1':scatter_y(0.011539),'x2':scatter_x(0.14),'y2':scatter_y(0.011539),'stroke-opacity':0},
+                                            {'x1':scatter_x(0.14),'y1':scatter_y(0.011539),'x2':scatter_x(0.14),'y2':scatter_y(0.011539),'stroke-opacity':0},
+                                            {'x1':scatter_x(0.14),'y1':scatter_y(0.011539),'x2':scatter_x(0.99),'y2':scatter_y(0.9846615),'stroke-opacity':0.8},
+                                            {'x1':scatter_x(0.99),'y1':scatter_y(0.9846615),'x2':scatter_x(0.99),'y2':scatter_y(0.9846615),'stroke-opacity':0},
                                             {'x1':scatter_x(0),'y1':scatter_y(0),'x2':scatter_x(0),'y2':scatter_y(0),'stroke-opacity':0},
                                             {'x1':scatter_x(0),'y1':scatter_y(0),'x2':scatter_x(0),'y2':scatter_y(0),'stroke-opacity':0},
                                             {'x1':scatter_x(0),'y1':scatter_y(0.7),'x2':scatter_x(0),'y2':scatter_y(0.7),'stroke-opacity':0},
@@ -1130,36 +1167,44 @@
                     var bar_pos = [0,0,0,0,0,0, d => scatter_x(d.avg),0,0,0][i]
 
                     // just changing some opacities
-                    var map_opacity = [0,0,0,0,0,0,0,0,0,1][i]     
-                    var xaxis_opacity = [1,1,1,1,1,1,1,1,1,0][i]
-                    var yaxis_opacity = [1,1,1,1,1,1,0,1,1,0][i]
+                    var map_opacity = [0,0,0,0,0,0,0,0,0,1][i]   
+                    var houses_opacity = [1,0,0,0,0,0,0,0,0,0][i]   
+                    var xaxis_opacity = [0,1,1,1,1,1,1,1,1,0][i]
+                    var yaxis_opacity = [0,1,1,1,1,1,0,1,1,0][i]
                     var bar_yaxis_opacity = [0,0,0,0,0,0,1,0,0,0][i]
+                    var pearsons_opacity = [0,0,1,0,0,0,0,0,0,0][i]
 
                     // the transitions
 
                     map.transition().duration(1000)
                         .attr('opacity',map_opacity);
 
+                    house_img.transition().duration(1000)
+                        .attr('opacity',houses_opacity);
+
+                    pearsons_text.transition().duration(1000)
+                        .attr('opacity',pearsons_opacity);
+
                     points.transition().duration(1000)
-                        .attrs(scatter_pos)
+                        .attrs(scatter_pos);
 
                     centroids.transition().duration(1000)
-                        .attrs(centroid_pos)
+                        .attrs(centroid_pos);
 
                     line_of_bf.transition().duration(1000)
-                        .attrs(line_of_bf_pos)
+                        .attrs(line_of_bf_pos);
 
                     x_axis.transition().duration(1000)
-                        .attr('opacity',xaxis_opacity)
+                        .attr('opacity',xaxis_opacity);
 
                     y_axis.transition().duration(1000)
-                        .attr('opacity',yaxis_opacity)
+                        .attr('opacity',yaxis_opacity);
 
                     bar_y_axis.transition().duration(1000)
-                        .attr('opacity',bar_yaxis_opacity)
+                        .attr('opacity',bar_yaxis_opacity);
 
                     viz_bars.transition().duration(1000)
-                        .attr('width',bar_pos)
+                        .attr('width',bar_pos);
 
                 })
 
