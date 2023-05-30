@@ -52,6 +52,10 @@
             bottom: 50px;
             float: right;
             }
+
+            .scroller_section_title {
+                margin-bottom:10px;
+            }
         </style>
 
     </head>
@@ -93,7 +97,7 @@
         </div>
         <p class = "d3-post d3-post--content--text">
             While learning about d3.js throughout the past few years, I have come across many different visualisation styles. One of the most captivating being the scroller. Scrollers use successive and reversible animations to tell a story with data and d3.js.
-            Many amazing articles have been written using scrollers, my inspiration for this experiment being both the pioneering <a href = "https://vallandingham.me/scroller.html">So you want to build a scroller</a> by Jim Vallandingham
+            Many amazing articles have been written using scrollers, my inspiration for this experiment being both the pioneering "So you want to build a scroller" by Jim Vallandingham and articles written by Adam Pearce. Here is my take on a scroller, using the similar code to the graph-scroll.js module written by Adam.
         </p>
         <div class = "d3-post d3-post--subtitle">
             <p class = "d3-post d3-post--subtitle--text">
@@ -108,70 +112,63 @@
             <div id='graph'></div>
             <div id='sections'>
                 <div>
-                    <h3>Section 1. Blank</h3>
-                    graph_scroll takes a selection of explanatory text sections and dispatches <span class='mono'>active</span> events as different sections are scrolled into to view. These active events are used to update a graph's state.
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                    <h3 class = 'scroller_section_title'>The Data</h3>
+                    We will investigate some housing price data curated for this task. Note this is mock data and some features have been curated to demonstrate the capability of d3.js when equipped with scrolling.
+                    In terms of the structure of our dataset, the two main attributes are 'City', indicating the location of the house, and 'Type' which takes values, 'detached', 'semi-detached' or 'flat'. Metrics include the 'price' of the house,
+                    it's floor area, a binary indicator for whether or not it has a garage, it's distance to the closest train station, a yearly estimate of council tax, and also details about it's current inhabitants such as how many cars are owned. All of these metrics have been standardised to lie in a unit interval, 0 being the minimum in the dataset, and 1 being the maximum. 
+                    This allows for ease of analysis without changing the scale on every visualisation.
+                    </div> 
+                <div>
+                    <h3 class = 'scroller_section_title'>Beginning with floor area</h3>
+                    A sensible place to start when analysing any dataset is to consider it's context. This being a housing dataset, it is reasonable to assume that larger houses are likely to have a higher price. For out measure of size, we use floor area on the x-axis and price on the y-axis.
+                    We can clearly see that our assumption seems to be justified by the data. Indeed higher floor areas correspond to higher prices, however, how should we quantify the strength of this relationship.
                 </div>
                 <div>
-                    <h3>Section 2. Points</h3>
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                    <h3 class = 'scroller_section_title'>Statistics for correlation</h3>
+                    We can quantify the strength using the product moment correlation coefficient or PMCC. This measure varies between -1 (perfect negative correlation), and 1 (perfect positive correlation). Applying this measure to our data, we see a value of 0.93, with a p-value less than 0.05, indicating a strongly positive and statistically significant correlation.
+                    Using a statistical software such as R, a linear model can then be fitted to produce a line of best fit. This will allow us to interpolate new values in the dataset with reasonable confidence. One issue with this univariate analysis is the possibility of confounders, other features of our dataset with could be producing this correlation. After all, correlation is not causation.
                 </div>
                 <div>
-                    <h3>Section 3. Points and Line of BF</h3>
-                    graph_scroll takes a selection of explanatory text sections and dispatches <span class='mono'>active</span> events as different sections are scrolled into to view. These active events are used to update a graph's state.
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                    <h3 class = 'scroller_section_title'>Evidence of confounding</h3>
+                    
                 </div>
                 <div>
-                    <h3>Section 4. Coloured points</h3>
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                </div>
-                <div>
-                    <h3>Section 5. Clusters</h3>
+                    <h3 class = 'scroller_section_title'>Section 5. Clusters</h3>
                     The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
                     The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
                     The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
                     The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
                 </div>
                 <div>
-                    <h3>Section 6. Clusters with Centroids</h3>
+                    <h3 class = 'scroller_section_title'>Section 6. Clusters with Centroids</h3>
                     The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
                     The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
                     The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
                     The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
                 </div>
                 <div>
-                    <h3>Section 7. Bar Chart</h3>
+                    <h3 class = 'scroller_section_title'>Section 7. Bar Chart</h3>
                     The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
                     The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
                     The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
                     The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
                 </div>
                 <div>
-                    <h3>Section 8. Perceptron</h3>
+                    <h3 class = 'scroller_section_title'>Section 8. Perceptron</h3>
                     The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
                     The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
                     The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
                     The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
                 </div>
                 <div>
-                    <h3>Section 9. Perceptron no line</h3>
+                    <h3 class = 'scroller_section_title'>Section 9. Perceptron no line</h3>
                     The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
                     The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
                     The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
                     The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
                 </div>
                 <div>
-                    <h3>Section 10. Map</h3>
+                    <h3 class = 'scroller_section_title'>Section 10. Map</h3>
                     The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
                     The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
                     The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
