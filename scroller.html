@@ -50,6 +50,10 @@
             bottom: 50px;
             float: right;
             }
+
+            .scroller_section_title {
+                margin-bottom:10px;
+            }
         </style>
 
     </head>
@@ -81,8 +85,24 @@
                 Reactive visualisation using <strong>scrolling</strong>
             </h1>
             <p class = "section__subtitle section__subtitle--intro"></p>
-            <img src="img/storytelling.png" class = "intro__image">
+            <img src="img/scroller.png" class = "intro__image">
         </section>
+
+        <div class = "d3-post d3-post--subtitle">
+            <p class = "d3-post d3-post--subtitle--text">
+                Inspiration
+            </p>
+        </div>
+        <p class = "d3-post d3-post--content--text">
+            While learning about d3.js throughout the past few years, I have come across many different visualisation styles. One of the most captivating being the scroller. Scrollers use successive and reversible animations to tell a story with data and d3.js.
+            Many amazing articles have been written using scrollers, my inspiration for this experiment being both the pioneering "So you want to build a scroller" by Jim Vallandingham and articles written by Adam Pearce. Here is my take on a scroller, using the similar code to the graph-scroll.js module written by Adam.
+        </p>
+        <div class = "d3-post d3-post--subtitle">
+            <p class = "d3-post d3-post--subtitle--text">
+                Scrolling with housing data
+            </p>
+        </div>
+        <p class = "d3-post d3-post--content--text"></p>
 
         <!-- INSERT SCROLLER HERE -->
 
@@ -90,92 +110,80 @@
             <div id='graph'></div>
             <div id='sections'>
                 <div>
-                    <h3>Section 1. Blank</h3>
-                    graph_scroll takes a selection of explanatory text sections and dispatches <span class='mono'>active</span> events as different sections are scrolled into to view. These active events are used to update a graph's state.
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                    <h3 class = 'scroller_section_title'>The Data</h3>
+                    We will investigate some housing price data curated for this task. Note this is mock data and some features have been curated to demonstrate the capability of d3.js when equipped with scrolling.
+                    In terms of the structure of our dataset, the two main attributes are 'City', indicating the location of the house, and 'Type' which takes values, 'detached', 'semi-detached' or 'flat'. Metrics include the 'price' of the house,
+                    it's floor area, a binary indicator for whether or not it has a garage, it's distance to the closest train station, a yearly estimate of council tax, and also details about it's current inhabitants such as how many cars are owned. All of these metrics have been standardised to lie in a unit interval, 0 being the minimum in the dataset, and 1 being the maximum. 
+                    This allows for ease of analysis without changing the scale on every visualisation.
+                    </div> 
+                <div>
+                    <h3 class = 'scroller_section_title'>Beginning with floor area</h3>
+                    A sensible place to start when analysing any dataset is to consider it's context. This being a housing dataset, it is reasonable to assume that larger houses are likely to have a higher price. For out measure of size, we use floor area on the x-axis and price on the y-axis.
+                    We can clearly see that our assumption seems to be justified by the data. Indeed higher floor areas correspond to higher prices, however, how should we quantify the strength of this relationship.
                 </div>
                 <div>
-                    <h3>Section 2. Points</h3>
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                    <h3 class = 'scroller_section_title'>Statistics for correlation</h3>
+                    We can quantify the strength using the product moment correlation coefficient or PMCC. This measure varies between -1 (perfect negative correlation), and 1 (perfect positive correlation). Applying this measure to our data, we see a value of 0.93, with a p-value less than 0.05, indicating a strongly positive and statistically significant correlation.
+                    Using a statistical software such as R, a linear model can then be fitted to produce a line of best fit. This will allow us to interpolate new values in the dataset with reasonable confidence. One issue with this univariate analysis is the possibility of confounders, other features of our dataset with could be producing this correlation. After all, correlation is not causation.
                 </div>
                 <div>
-                    <h3>Section 3. Points and Line of BF</h3>
-                    graph_scroll takes a selection of explanatory text sections and dispatches <span class='mono'>active</span> events as different sections are scrolled into to view. These active events are used to update a graph's state.
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                    <h3 class = 'scroller_section_title'>Evidence of confounding</h3>
+                    Whenever we see a relationship between two variables, it's important to consider whether there is a plausible causal relationship between them. In our case, it does seem plausible that there is a causal relationship, but we also know that floor area is not the only factor that contributes to house prices. Colouring by house type, we see some clear effect on house prices.
+                    It seems that detached houses are typically more expensive, clearly we need to consider more than just the floor area if we want to accurately predict prices. Let's now plot some other variables that we have to hand; number of occupants vs number of rooms to investigate any further relationships in our dataset.
                 </div>
                 <div>
-                    <h3>Section 4. Coloured points</h3>
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                    <h3 class = 'scroller_section_title'>Clusters</h3>
+                    Looking at these two variables, we see some tight groups of data points. When these groups are clearly defined like this, we call them 'clusters'. We can conclude that there is some underlying relationship in the data which causes houses with similar occupants to group. Houses in the orange cluster have more rooms per person than the red cluster, where as the density of people in blue houses is higher than the other clusters.
+                    It would be useful if we could use our data to predict the price of a new house, based on it's characteristics. To do this, it would be useful to know which of these 3 clusters a new house falls into, then we can reasonably make the assumption that it will have a similar price to those in the same cluster.
                 </div>
                 <div>
-                    <h3>Section 5. Clusters</h3>
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                    <h3 class = 'scroller_section_title'>Clusters with centroids</h3>
+                    We can add circles to our plot which are centered at a 'centroid'. A centroid is a point in the plane (or higher dimensions) that represents the average of data points in it's cluster. We can then draw a circle with the centroid as it's center to produce a region as shown.
+                    These regions allow us to reasonably quickly determine which cluster a new point lies in. Notice how in the graphic shown there are still regions of the plot without a colour. A better way to compute which centroid a new point enters is to use 'decision boundaries' which divide the plane into regions called 'voronoi cells'. The resulting graphic is called a 'voronoi diagram'. Wolfram MathWorld has a great description of the concept for futher reading.
+                    Putting these results in context, it seems more rooms means higher prices. Maybe it is all about house size? Let's take a look at data on average rooms per person, by the house type.
                 </div>
                 <div>
-                    <h3>Section 6. Clusters with Centroids</h3>
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                    <h3 class = 'scroller_section_title'>Rooms per person</h3>
+                    The x-axis now shows the average rooms per person in each of our houses. As we might expect, detached houses have more rooms per person than flats. We can make the conclusion that as we move from flats to detached houses, the number of rooms grows faster than the number of occupants, hence each person gets more space! This is an interesting trend to observe. As flats are typically for one or two people, we may expect that the rooms per person for flats is high but this is not the case. One possible explanation for this could be that we are including studio flats, maybe we ought to consider whether the defintion of room in this context is appropriate.
+                    Challenging defintions and assumptions is an important part of analysis, we need to judge whether the trends we uncover are reasonable in our context.
                 </div>
                 <div>
-                    <h3>Section 7. Bar Chart</h3>
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                    <h3 class = 'scroller_section_title'>Separation in the data</h3>
+                    Using all features of the data provided to us is also important. The housing data also has an attribute for the number of cars owned (x-axis) and total yearly tax paid (y-axis). Let's plot these attributes against one another and colour by a binary indicator of whether a house is in a city center. (red: No, blue: Yes)
+                    We see a somewhat uniform distribution of points, yet we do observe some grouping. Typically houses in city centers pay more tax. Contexualising this, maybe there are more roads to maintain, or maybe an inner city emissions charge that those on the outskirts don't have to pay. Interestingly, we do see a clear dividing line in the dataset.
+                    We refer to these kind of distributions as 'separable'. All points with some attribute can be separated by some hyperplane (in our planar case, the hyperplanes are lines).
                 </div>
                 <div>
-                    <h3>Section 8. Perceptron</h3>
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                    <h3 class = 'scroller_section_title'>The Perceptron Algorithm</h3>
+                    When we have a separable dataset, we can employ an algorithm called the 'Perceptron'. This algorithm computes the separating hyperplane when our data is in homogeneous form. Homogenising the data and applying the Perceptron algorithm gives us the line shown. We can then use this line to predict the binary label of a new house, which allows us to associate it more closely to houses on that side of the line.
+                    The Perceptron is a central algorithm used in neural networks, which are integral to efficient Machine Learning. For more information, a great publication is "What is a Perceptron? Basics of Neural Networks" by Anjali Bhardwaj at 'towardsdatascience.com'.
                 </div>
                 <div>
-                    <h3>Section 9. Perceptron no line</h3>
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                </div>
-                <div>
-                    <h3>Section 10. Map</h3>
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                    <h3 class = 'scroller_section_title'>Occam's Razor</h3>
+                    Let's subset to just the London houses. For any interesting relationship found in a dataset, we ask the question 'why?'. There are often many answers, with varying degrees of plausibility. Occam's Razor states that simpler explanations are more often than not better than complicated ones. At this point in our investigation, there are two unused columns in our dataset, those being the coordinates of the houses. Plotting these on a map reveals what is the simplest explanation of them all for the difference in house prices found in our data: <em>Commuting londoners love being near a train station.</em>
                 </div>
             </div>
             <p class = "d3-post d3-post--content--text"></p>
             <p class = "d3-post d3-post--content--text"></p>
             <p class = "d3-post d3-post--content--text"></p>
             <p class = "d3-post d3-post--content--text"></p>
-            
+            <p class = "d3-post d3-post--content--text"></p>
+            <p class = "d3-post d3-post--content--text"></p>
+            <p class = "d3-post d3-post--content--text"></p>
             
         </div>
         
         <div class = "d3-post d3-post--subtitle">
             <p class = "d3-post d3-post--subtitle--text">
-                End of the scroller
+                Remarks
             </p>
         </div>
 
         <p class = "d3-post d3-post--content--text">
-            lorem ipsum
+            As mentioned in the introduction, I have wanted to experiment with animation and d3.js scrollers for a long time. I immensely enjoyed writing this short article using a scroller. It has opened my eyes to the engagement that can come from animation when presenting a data analysis project.
+            I hope to be able to continue using scrollers to display my findings throughout my career in data, and learning how to write them has solidified my knowledge of d3.js and web development in general.
+            The data used was manufactured by myself to contain the features and relationships shown. This intention of this article is to display the capabilities of a scroller using d3.js, and not to provide a comprehensive nor entirely accurate analysis.
+            The code which I modified for the project is all from graph-scroll.js by Adam, and the image used for the map is from Google Maps.
         </p>
 
 
@@ -1042,6 +1050,15 @@
                     .attr('y', 0)
                     .attr('width',viz_width)
                     .attr('opacity',0);
+            
+            var house_img = svg
+                .append('g')
+                .append('svg:image')
+                    .attr('xlink:href', function (d) {return 'img/house_birdeye.png'})
+                    .attr('x', 0)
+                    .attr('y', 0)
+                    .attr('width',viz_width)
+                    .attr('opacity',1);
 
             var points = svg.append('g')
                 .selectAll("point")
@@ -1049,6 +1066,15 @@
                 .enter()
                 .append("circle")
                     .attrs({cx: d => scatter_x(d.Area), cy: viz_height, r: 3, fill: "#4bbfc9", opacity:0})
+
+            var pearsons_corr = 0.9321712
+
+            var pearsons_text = svg.append('g')
+                .append('text')
+                .text(String("PMCC: " + pearsons_corr + " (p < 2.2e-16)"))
+                .attr('x', scatter_x(0.1))
+                .attr('y', scatter_y(0.9))
+                .attr('opacity',0)
 
             var line_of_bf = svg.append('g')
                 .append('line')
@@ -1083,7 +1109,6 @@
                     .attr("fill", d => colors[d.ClusterCol])
                     .attr('opacity',0.8)
 
-
             var gs = d3.graphScroll()
                 .container(d3.select('.container-1'))
                 .graph(d3.selectAll('container-1 #graph'))
@@ -1116,10 +1141,10 @@
                                         {cx: d=> scatter_x(d.x),cy:d => scatter_y(d.y),r:"0px", fill: d => colors[d.ClusterCol],opacity:0}][i]
                     
                     
-                    var line_of_bf_pos = [  {'x1':scatter_x(0.3),'y1':scatter_y(0.05),'x2':scatter_x(0.3),'y2':scatter_y(0.05),'stroke-opacity':0},
-                                            {'x1':scatter_x(0.3),'y1':scatter_y(0.05),'x2':scatter_x(0.3),'y2':scatter_y(0.05),'stroke-opacity':0},
-                                            {'x1':scatter_x(0.3),'y1':scatter_y(0.05),'x2':scatter_x(0.9),'y2':scatter_y(1),'stroke-opacity':0.8},
-                                            {'x1':scatter_x(0.9),'y1':scatter_y(1),'x2':scatter_x(0.9),'y2':scatter_y(1),'stroke-opacity':0},
+                    var line_of_bf_pos = [  {'x1':scatter_x(0.14),'y1':scatter_y(0.011539),'x2':scatter_x(0.14),'y2':scatter_y(0.011539),'stroke-opacity':0},
+                                            {'x1':scatter_x(0.14),'y1':scatter_y(0.011539),'x2':scatter_x(0.14),'y2':scatter_y(0.011539),'stroke-opacity':0},
+                                            {'x1':scatter_x(0.14),'y1':scatter_y(0.011539),'x2':scatter_x(0.99),'y2':scatter_y(0.9846615),'stroke-opacity':0.8},
+                                            {'x1':scatter_x(0.99),'y1':scatter_y(0.9846615),'x2':scatter_x(0.99),'y2':scatter_y(0.9846615),'stroke-opacity':0},
                                             {'x1':scatter_x(0),'y1':scatter_y(0),'x2':scatter_x(0),'y2':scatter_y(0),'stroke-opacity':0},
                                             {'x1':scatter_x(0),'y1':scatter_y(0),'x2':scatter_x(0),'y2':scatter_y(0),'stroke-opacity':0},
                                             {'x1':scatter_x(0),'y1':scatter_y(0.7),'x2':scatter_x(0),'y2':scatter_y(0.7),'stroke-opacity':0},
@@ -1130,36 +1155,44 @@
                     var bar_pos = [0,0,0,0,0,0, d => scatter_x(d.avg),0,0,0][i]
 
                     // just changing some opacities
-                    var map_opacity = [0,0,0,0,0,0,0,0,0,1][i]     
-                    var xaxis_opacity = [1,1,1,1,1,1,1,1,1,0][i]
-                    var yaxis_opacity = [1,1,1,1,1,1,0,1,1,0][i]
+                    var map_opacity = [0,0,0,0,0,0,0,0,0,1][i]   
+                    var houses_opacity = [1,0,0,0,0,0,0,0,0,0][i]   
+                    var xaxis_opacity = [0,1,1,1,1,1,1,1,1,0][i]
+                    var yaxis_opacity = [0,1,1,1,1,1,0,1,1,0][i]
                     var bar_yaxis_opacity = [0,0,0,0,0,0,1,0,0,0][i]
+                    var pearsons_opacity = [0,0,1,0,0,0,0,0,0,0][i]
 
                     // the transitions
 
                     map.transition().duration(1000)
                         .attr('opacity',map_opacity);
 
+                    house_img.transition().duration(1000)
+                        .attr('opacity',houses_opacity);
+
+                    pearsons_text.transition().duration(1000)
+                        .attr('opacity',pearsons_opacity);
+
                     points.transition().duration(1000)
-                        .attrs(scatter_pos)
+                        .attrs(scatter_pos);
 
                     centroids.transition().duration(1000)
-                        .attrs(centroid_pos)
+                        .attrs(centroid_pos);
 
                     line_of_bf.transition().duration(1000)
-                        .attrs(line_of_bf_pos)
+                        .attrs(line_of_bf_pos);
 
                     x_axis.transition().duration(1000)
-                        .attr('opacity',xaxis_opacity)
+                        .attr('opacity',xaxis_opacity);
 
                     y_axis.transition().duration(1000)
-                        .attr('opacity',yaxis_opacity)
+                        .attr('opacity',yaxis_opacity);
 
                     bar_y_axis.transition().duration(1000)
-                        .attr('opacity',bar_yaxis_opacity)
+                        .attr('opacity',bar_yaxis_opacity);
 
                     viz_bars.transition().duration(1000)
-                        .attr('width',bar_pos)
+                        .attr('width',bar_pos);
 
                 })
 
