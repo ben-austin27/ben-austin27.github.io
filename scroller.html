@@ -14,8 +14,6 @@
         <!-- EXTRA STYLE SHEET FOR THE SCROLLER -->
         <style>
 
-            a{display: inline-flex !important;}
-
             #container{
             position: relative;
             }
@@ -130,49 +128,39 @@
                 </div>
                 <div>
                     <h3 class = 'scroller_section_title'>Evidence of confounding</h3>
-                    
+                    Whenever we see a relationship between two variables, it's important to consider whether there is a plausible causal relationship between them. In our case, it does seem plausible that there is a causal relationship, but we also know that floor area is not the only factor that contributes to house prices. Colouring by house type, we see some clear effect on house prices.
+                    It seems that detached houses are typically more expensive, clearly we need to consider more than just the floor area if we want to accurately predict prices. Let's now plot some other variables that we have to hand; number of occupants vs number of rooms to investigate any further relationships in our dataset.
                 </div>
                 <div>
-                    <h3 class = 'scroller_section_title'>Section 5. Clusters</h3>
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                    <h3 class = 'scroller_section_title'>Clusters</h3>
+                    Looking at these two variables, we see some tight groups of data points. When these groups are clearly defined like this, we call them 'clusters'. We can conclude that there is some underlying relationship in the data which causes houses with similar occupants to group. Houses in the orange cluster have more rooms per person than the red cluster, where as the density of people in blue houses is higher than the other clusters.
+                    It would be useful if we could use our data to predict the price of a new house, based on it's characteristics. To do this, it would be useful to know which of these 3 clusters a new house falls into, then we can reasonably make the assumption that it will have a similar price to those in the same cluster.
                 </div>
                 <div>
-                    <h3 class = 'scroller_section_title'>Section 6. Clusters with Centroids</h3>
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                    <h3 class = 'scroller_section_title'>Clusters with centroids</h3>
+                    We can add circles to our plot which are centered at a 'centroid'. A centroid is a point in the plane (or higher dimensions) that represents the average of data points in it's cluster. We can then draw a circle with the centroid as it's center to produce a region as shown.
+                    These regions allow us to reasonably quickly determine which cluster a new point lies in. Notice how in the graphic shown there are still regions of the plot without a colour. A better way to compute which centroid a new point enters is to use 'decision boundaries' which divide the plane into regions called 'voronoi cells'. The resulting graphic is called a 'voronoi diagram'. Wolfram MathWorld has a great description of the concept for futher reading.
+                    Putting these results in context, it seems more rooms means higher prices. Maybe it is all about house size? Let's take a look at data on average rooms per person, by the house type.
                 </div>
                 <div>
-                    <h3 class = 'scroller_section_title'>Section 7. Bar Chart</h3>
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                    <h3 class = 'scroller_section_title'>Rooms per person</h3>
+                    The x-axis now shows the average rooms per person in each of our houses. As we might expect, detached houses have more rooms per person than flats. We can make the conclusion that as we move from flats to detached houses, the number of rooms grows faster than the number of occupants, hence each person gets more space! This is an interesting trend to observe. As flats are typically for one or two people, we may expect that the rooms per person for flats is high but this is not the case. One possible explanation for this could be that we are including studio flats, maybe we ought to consider whether the defintion of room in this context is appropriate.
+                    Challenging defintions and assumptions is an important part of analysis, we need to judge whether the trends we uncover are reasonable in our context.
                 </div>
                 <div>
-                    <h3 class = 'scroller_section_title'>Section 8. Perceptron</h3>
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                    <h3 class = 'scroller_section_title'>Separation in the data</h3>
+                    Using all features of the data provided to us is also important. The housing data also has an attribute for the number of cars owned (x-axis) and total yearly tax paid (y-axis). Let's plot these attributes against one another and colour by a binary indicator of whether a house is in a city center. (red: No, blue: Yes)
+                    We see a somewhat uniform distribution of points, yet we do observe some grouping. Typically houses in city centers pay more tax. Contexualising this, maybe there are more roads to maintain, or maybe an inner city emissions charge that those on the outskirts don't have to pay. Interestingly, we do see a clear dividing line in the dataset.
+                    We refer to these kind of distributions as 'separable'. All points with some attribute can be separated by some hyperplane (in our planar case, the hyperplanes are lines).
                 </div>
                 <div>
-                    <h3 class = 'scroller_section_title'>Section 9. Perceptron no line</h3>
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                    <h3 class = 'scroller_section_title'>The Perceptron Algorithm</h3>
+                    When we have a separable dataset, we can employ an algorithm called the 'Perceptron'. This algorithm computes the separating hyperplane when our data is in homogeneous form. Homogenising the data and applying the Perceptron algorithm gives us the line shown. We can then use this line to predict the binary label of a new house, which allows us to associate it more closely to houses on that side of the line.
+                    The Perceptron is a central algorithm used in neural networks, which are integral to efficient Machine Learning. For more information, a great publication is "What is a Perceptron? Basics of Neural Networks" by Anjali Bhardwaj at 'towardsdatascience.com'.
                 </div>
                 <div>
-                    <h3 class = 'scroller_section_title'>Section 10. Map</h3>
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
-                    The top most text section scrolled into view is classed <span class='mono'>graph-scroll-active</span>. This makes it easy to highlight the active section with css: 
+                    <h3 class = 'scroller_section_title'>Occam's Razor</h3>
+                    Let's subset to just the London houses. For any interesting relationship found in a dataset, we ask the question 'why?'. There are often many answers, with varying degrees of plausibility. Occam's Razor states that simpler explanations are more often than not better than complicated ones. At this point in our investigation, there are two unused columns in our dataset, those being the coordinates of the houses. Plotting these on a map reveals what is the simplest explanation of them all for the difference in house prices found in our data: <em>Commuting londoners love being near a train station.</em>
                 </div>
             </div>
             <p class = "d3-post d3-post--content--text"></p>
@@ -183,17 +171,19 @@
             <p class = "d3-post d3-post--content--text"></p>
             <p class = "d3-post d3-post--content--text"></p>
             
-            
         </div>
         
         <div class = "d3-post d3-post--subtitle">
             <p class = "d3-post d3-post--subtitle--text">
-                End of the scroller
+                Remarks
             </p>
         </div>
 
         <p class = "d3-post d3-post--content--text">
-            lorem ipsum
+            As mentioned in the introduction, I have wanted to experiment with animation and d3.js scrollers for a long time. I immensely enjoyed writing this short article using a scroller. It has opened my eyes to the engagement that can come from animation when presenting a data analysis project.
+            I hope to be able to continue using scrollers to display my findings throughout my career in data, and learning how to write them has solidified my knowledge of d3.js and web development in general.
+            The data used was manufactured by myself to contain the features and relationships shown. This intention of this article is to display the capabilities of a scroller using d3.js, and not to provide a comprehensive nor entirely accurate analysis.
+            The code which I modified for the project is all from graph-scroll.js by Adam, and the image used for the map is from Google Maps.
         </p>
 
 
@@ -1118,7 +1108,6 @@
                     .attr("width", 0)
                     .attr("fill", d => colors[d.ClusterCol])
                     .attr('opacity',0.8)
-
 
             var gs = d3.graphScroll()
                 .container(d3.select('.container-1'))
