@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ben Austin > d3.js</title>
+        <link rel = "stylesheet"
+        href = "https://cdnjs.cloudfare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+        <link rel = "stylesheet"
+        href = "https://cdnjs.cloudfare.com/ajas/libs/font-awesome/5.11.2/css/all.css"
+        integrity = "sha256-46qynGAkLSFpVbEBog43gvNhfr0j+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
+        <script src="https://kit.fontawesome.com/1d82a883f3.js" crossorigin="anonymous"></script>
+        <script src="https://d3js.org/d3.v6.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans+Pro:300,900&display=swap" rel="stylesheet">
+        <link rel = "stylesheet" href = "css/style.css">
+    </head>
+    <body>
+        <header>
+            <div class= "logo">
+                <li class= "logo-list">
+                    <a class = "logo" href = "index.html">
+                        <i class="fas fa-bold"></i>
+                    </a>
+                </li>
+            </div>
+            <button class = "nav-toggle" aria-label="toggle navigation">
+                <span class = "hamburger"></span>
+            </button>
+            <nav class = "nav">
+                <ul class="nav__list">
+                    <li class = "nav__item"><a href = "index.html" class = "nav__link">Home</a></li>
+                    <li class = "nav__item"><a href = "index.html#services" class = "nav__link">My Services</a></li>
+                    <li class = "nav__item"><a href = "index.html#about" class = "nav__link">About me</a></li>
+                    <li class = "nav__item"><a href = "index.html#work" class = "nav__link">My Work</a></li>
+                    <li class = "nav__item"><a href = "d3_page.html" class = "nav__link">d3.js</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="intro" id="home">
+            <h1 class = "section__title section__title--intro">
+                Revising <strong>maths</strong>
+            </h1>
+            <p class = "section__subtitle section__subtitle--intro"></p>
+            <img src="img/maths.png" class = "intro__image">
+        </section>
+
+
+        <!-- d3 content -->
+
+        <section class = "d3-post">
+            <div class = "d3-post d3-post--subtitle">
+                <p class = "d3-post d3-post--subtitle--text">
+                    Physics and Maths Tutor Content
+                </p>
+            </div>
+            <p class = "d3-post d3-post--content--text">
+                A large part of my motivation to learn d3.js was to produce custom MicroStrategy visualisations. Through employing the techniques detailed below, I was able to produce and deploy a productionised Waterfall Visualisation that was fully user adaptable. Learning this skill allowed me to widen my knowledge of MicroStrategy and build on my MCA certification. d3.js unlocks the potential of MicroStrategy to be a fully customisable visualistion tool.
+            </p>
+            <table class="recipe_table">
+                <tr>
+                  <th>Number</th>
+                  <th>Grade</th>
+                  <th>Topic</th>
+                  <th>Question Sheet</th> 
+                </tr>
+                <tr><td>1</td><td>1&2</td><td>Addition and Subtraction</td><td><a href="https://pmt.physicsandmathstutor.com/download/Maths/GCSE/Topic-Qs/Edexcel/Set-0/Grade-1-2/QP/Addition%20and%20Subtraction%20QP.pdf">Link</a></td></tr><tr><td>2</td><td>1&2</td><td>Angles</td><td><a href="https://pmt.physicsandmathstutor.com/download/Maths/GCSE/Topic-Qs/Edexcel/Set-0/Grade-1-2/QP/Angles%20QP.pdf">Link</a></td></tr><tr><td>3</td><td>1&2</td><td>Area</td><td><a href="https://pmt.physicsandmathstutor.com/download/Maths/GCSE/Topic-Qs/Edexcel/Set-0/Grade-1-2/QP/Area%20QP.pdf">Link</a></td></tr><tr><td>4</td><td>1&2</td><td>Averages</td><td><a href="https://pmt.physicsandmathstutor.com/download/Maths/GCSE/Topic-Qs/Edexcel/Set-0/Grade-1-2/QP/Averages%20QP.pdf">Link</a></td></tr><tr><td>5</td><td>1&2</td><td>BIDMAS</td><td><a href="https://pmt.physicsandmathstutor.com/download/Maths/GCSE/Topic-Qs/Edexcel/Set-0/Grade-1-2/QP/BIDMAS%20QP.pdf">Link</a></td></tr><tr><td>6</td><td>1&2</td><td>Factors and Multiples</td><td><a href="https://pmt.physicsandmathstutor.com/download/Maths/GCSE/Topic-Qs/Edexcel/Set-0/Grade-1-2/QP/Factors%20and%20Multiples%20QP.pdf">Link</a></td></tr><tr><td>7</td><td>1&2</td><td>Fractions of an Amount</td><td><a href="https://pmt.physicsandmathstutor.com/download/Maths/GCSE/Topic-Qs/Edexcel/Set-0/Grade-1-2/QP/Fractions%20of%20an%20Amount%20%20QP.pdf">Link</a></td></tr><tr><td>8</td><td>1&2</td><td>Fractions, Decimals and Percentages</td><td><a href="https://pmt.physicsandmathstutor.com/download/Maths/GCSE/Topic-Qs/Edexcel/Set-0/Grade-1-2/QP/Fractions,%20Decimals%20and%20Percentages%20QP.pdf">Link</a></td></tr><tr><td>9</td><td>1&2</td><td>Frequency Polygons </td><td><a href="https://pmt.physicsandmathstutor.com/download/Maths/GCSE/Topic-Qs/Edexcel/Set-0/Grade-1-2/QP/Frequency%20Polygons%20QP.pdf">Link</a></td></tr><tr><td>10</td><td>1&2</td><td>Multiplication and Division</td><td><a href="https://pmt.physicsandmathstutor.com/download/Maths/GCSE/Topic-Qs/Edexcel/Set-0/Grade-1-2/QP/Multiplication%20and%20Division%20QP.pdf">Link</a></td></tr><tr><td>11</td><td>1&2</td><td>Negative Numbers</td><td><a href="https://pmt.physicsandmathstutor.com/download/Maths/GCSE/Topic-Qs/Edexcel/Set-0/Grade-1-2/QP/Negative%20Numbers%20QP.pdf">Link</a></td></tr><tr><td>12</td><td>1&2</td><td>Pie Charts</td><td><a href="https://pmt.physicsandmathstutor.com/download/Maths/GCSE/Topic-Qs/Edexcel/Set-0/Grade-1-2/QP/Pie%20Charts%20QP.pdf">Link</a></td></tr><tr><td>13</td><td>1&2</td><td>Powers and Roots</td><td><a href="https://pmt.physicsandmathstutor.com/download/Maths/GCSE/Topic-Qs/Edexcel/Set-0/Grade-1-2/QP/Powers%20and%20Roots%20QP.pdf">Link</a></td></tr><tr><td>14</td><td>1&2</td><td>Simplifying Algebra</td><td><a href="https://pmt.physicsandmathstutor.com/download/Maths/GCSE/Topic-Qs/Edexcel/Set-0/Grade-1-2/QP/Simplifying%20Algebra%20QP.pdf">Link</a></td></tr><tr><td>15</td><td>1&2</td><td>Stem and Leaf</td><td><a href="https://pmt.physicsandmathstutor.com/download/Maths/GCSE/Topic-Qs/Edexcel/Set-0/Grade-1-2/QP/Stem%20and%20Leaf%20QP.pdf">Link</a></td></tr><tr><td>16</td><td>3</td><td>Area and Circumference </td><td><a href="https://pmt.physicsandmathstutor.com/download/Maths/GCSE/Topic-Qs/Edexcel/Set-0/Grade-3/QP/Area%20and%20Circumference%20of%20Circles%20QP.pdf">Link</a></td></tr><tr><td>17</td><td>3</td><td>Area of Compound Shapes</td><td><a href="https://pmt.physicsandmathstutor.com/download/Maths/GCSE/Topic-Qs/Edexcel/Set-0/Grade-3/QP/Area%20of%20Compound%20Shapes%20QP.pdf">Link</a></td></tr><tr><td>18</td><td>3</td><td>Best Buy Questions</td><td><a href="https://pmt.physicsandmathstutor.com/download/Maths/GCSE/Topic-Qs/Edexcel/Set-0/Grade-3/QP/Best%20Buy%20Questions%20QP.pdf">Link</a></td></tr><tr><td>19</td><td>3</td><td>Drawing Graphs</td><td><a href="https://pmt.physicsandmathstutor.com/download/Maths/GCSE/Topic-Qs/Edexcel/Set-0/Grade-3/QP/Drawing%20Graphs%20QP.pdf">Link</a></td></tr><tr><td>20</td><td>3</td><td>Exchange Rates</td><td><a href="https://pmt.physicsandmathstutor.com/download/Maths/GCSE/Topic-Qs/Edexcel/Set-0/Grade-3/QP/Exchange%20Rates%20QP.pdf">Link</a></td></tr><tr><td>21</td><td>3</td><td>Fractions</td><td><a href="https://pmt.physicsandmathstutor.com/download/Maths/GCSE/Topic-Qs/Edexcel/Set-0/Grade-3/QP/Fractions%20QP.pdf">Link</a></td></tr><tr><td>22</td><td>3</td><td>Percentages</td><td><a href="https://pmt.physicsandmathstutor.com/download/Maths/GCSE/Topic-Qs/Edexcel/Set-0/Grade-3/QP/Percentages%20QP.pdf">Link</a></td></tr><tr><td>23</td><td>3</td><td>Probability</td><td><a href="https://pmt.physicsandmathstutor.com/download/Maths/GCSE/Topic-Qs/Edexcel/Set-0/Grade-3/QP/Probability%20QP.pdf">Link</a></td></tr><tr><td>24</td><td>3</td><td>Proportion</td><td><a href="https://pmt.physicsandmathstutor.com/download/Maths/GCSE/Topic-Qs/Edexcel/Set-0/Grade-3/QP/Proportion%20QP.pdf">Link</a></td></tr><tr><td>25</td><td>3</td><td>Ratio</td><td><a href="https://pmt.physicsandmathstutor.com/download/Maths/GCSE/Topic-Qs/Edexcel/Set-0/Grade-3/QP/Ratio%20QP.pdf">Link</a></td></tr><tr><td>26</td><td>3</td><td>Solving Complex Equations</td><td><a href="https://pmt.physicsandmathstutor.com/download/Maths/GCSE/Topic-Qs/Edexcel/Set-0/Grade-3/QP/Solving%20Equations%20with%20an%20Unknown%20on%20Both%20Sides%20QP.pdf">Link</a></td></tr><tr><td>27</td><td>3</td><td>Substitution</td><td><a href="https://pmt.physicsandmathstutor.com/download/Maths/GCSE/Topic-Qs/Edexcel/Set-0/Grade-3/QP/Substitution%20QP.pdf">Link</a></td></tr><tr><td>28</td><td>3</td><td>Enlargements</td><td><a href="https://pmt.physicsandmathstutor.com/download/Maths/GCSE/Topic-Qs/Edexcel/Set-0/Grade-3/QP/Transformations%20-%20Enlargements%20QP.pdf">Link</a></td></tr><tr><td>29</td><td>3</td><td>Mixed Transformations</td><td><a href="https://pmt.physicsandmathstutor.com/download/Maths/GCSE/Topic-Qs/Edexcel/Set-0/Grade-3/QP/Transformations%20-%20Mixed%20Transformations%20QP.pdf">Link</a></td></tr><tr><td>30</td><td>3</td><td>Reflections</td><td><a href="https://pmt.physicsandmathstutor.com/download/Maths/GCSE/Topic-Qs/Edexcel/Set-0/Grade-3/QP/Transformations%20-%20Reflections%20QP.pdf">Link</a></td></tr><tr><td>31</td><td>3</td><td>Rotations</td><td><a href="https://pmt.physicsandmathstutor.com/download/Maths/GCSE/Topic-Qs/Edexcel/Set-0/Grade-3/QP/Transformations%20-%20Rotations%20QP.pdf">Link</a></td></tr><tr><td>32</td><td>3</td><td>Translations</td><td><a href="https://pmt.physicsandmathstutor.com/download/Maths/GCSE/Topic-Qs/Edexcel/Set-0/Grade-3/QP/Transformations%20-%20Translations%20QP.pdf">Link</a></td></tr>
+              </table>
+
+        </section>
+
+        <footer class = "footer">
+            <a href="mailto:benaustin27@gmail.com" class = "footer__link">benaustin27@gmail.com</a>
+            <ul class = "social-list">
+                <li class = "social-list__item">
+                    <a class = "social-list__link" href = "facebook.com">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </li>
+                <li class = "social-list__item">
+                    <a class = "social-list__link" href = "instagram.com">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </li>
+                <li class = "social-list__item">
+                    <a class = "social-list__link" href = "github.com">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </li>
+            </ul>
+        </footer>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.js" integrity="sha512-UgS0SVyy/0fZ0i48Rr7gKpnP+Jio3oC7M4XaKP3BJUB/guN6Zr4BjU0Hsle0ey2HJvPLHE5YQCXTDrx27Lhe7A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="js/index.js"></script>
+        <script src="js/d3_basic_bar.js"></script>
+        <script src="js/d3_basic_scatter.js"></script>
+        </div>
+    </body>
+</html>
